@@ -15,9 +15,9 @@ spring:
         active: dev
     datasource:
         driver-class-name: org.h2.jdbcx.JdbcDataSource
-        url: jdbc:h2:mem:jhipster;DB_CLOSE_DELAY=-1
-        name: 
-        username: 
+        url: jdbc:h2:file:./jhipster.dev;DB_CLOSE_DELAY=-1
+        name:
+        username:
         password:
     jpa:
         database-platform: com.enbiso.proj.jproject.domain.util.FixedH2Dialect
@@ -45,7 +45,7 @@ server:
 
 jhipster:
     datasource: # JHipster-specific configuration, in addition to the standard spring.datasource properties
-        serverName: 
+        serverName:
     cache: # Hibernate 2nd level cache, used by CacheConfiguration
         timeToLiveSeconds: 3600
         ehcache:
