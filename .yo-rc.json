@@ -8,7 +8,7 @@
     "clusteredHttpSession": "no",
     "websocket": "no",
     "databaseType": "sql",
-    "devDatabaseType": "mysql",
+    "devDatabaseType": "h2Memory",
     "prodDatabaseType": "mysql",
     "searchEngine": "no",
     "useSass": false,
