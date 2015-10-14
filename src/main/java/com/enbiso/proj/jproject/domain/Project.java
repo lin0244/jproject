@@ -15,7 +15,7 @@ import java.util.Objects;
  * A Project.
  */
 @Entity
-@Table(name = "project")
+@Table(name = "app_project_tab")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 public class Project implements Serializable {
 
@@ -24,10 +24,10 @@ public class Project implements Serializable {
     private Long id;
 
 
-    @Size(min = 6, max = 6)        
+    @Size(min = 6, max = 6)
     @Column(name = "code", length = 6)
     private String code;
-    
+
     @Column(name = "name")
     private String name;
 

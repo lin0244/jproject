@@ -1,0 +1,7 @@
+id;title;status;description
+1;New;NEW;New task which needs to be investigated.
+2;Investigating;OPEN;Task is under investigation. This doesn't mean the development has been started yet.
+3;Development;OPEN;Development on progress.
+4;Testing;OPEN;Testing conducting to verify the development.
+5;Verified;CLOSE;Task verified and approved to get closed.
+6;Completed;CLOSE;Work assigned to the task is completed.

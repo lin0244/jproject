@@ -15,7 +15,7 @@ import java.util.Objects;
  * A Person.
  */
 @Entity
-@Table(name = "person")
+@Table(name = "app_person_tab")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 public class Person implements Serializable {
 
@@ -24,12 +24,12 @@ public class Person implements Serializable {
     private Long id;
 
 
-    @NotNull        
+    @NotNull
     @Column(name = "name", nullable = false)
     private String name;
 
     @Size(min = 5, max = 100)
-    @Pattern(regexp = "undefined")        
+    @Pattern(regexp = "undefined")
     @Column(name = "email", length = 100)
     private String email;
 

@@ -15,7 +15,7 @@ import java.util.Objects;
  * A TaskType.
  */
 @Entity
-@Table(name = "task_type")
+@Table(name = "app_task_type_tab")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 public class TaskType implements Serializable {
 
@@ -24,10 +24,10 @@ public class TaskType implements Serializable {
     private Long id;
 
 
-    @NotNull        
+    @NotNull
     @Column(name = "title", nullable = false)
     private String title;
-    
+
     @Column(name = "description")
     private String description;
 

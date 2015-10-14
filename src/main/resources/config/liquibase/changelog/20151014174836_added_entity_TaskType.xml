@@ -18,15 +18,18 @@
         Added the entity TaskType.
     -->
     <changeSet id="20151014174836" author="jhipster">
-        <createTable tableName="task_type">
+        <createTable tableName="app_task_type_tab">
             <column name="id" type="bigint" autoIncrement="${autoIncrement}" >
                 <constraints primaryKey="true" nullable="false"/>
             </column>
             <column name="title" type="varchar(255)">
                 <constraints nullable="false" />
             </column>
-            <column name="description" type="varchar(255)"/>
+            <column name="description" type="varchar(500)"/>
         </createTable>
-        
+        <loadData encoding="UTF-8"
+                  file="config/liquibase/task_types.csv"
+                  separator=";"
+                  tableName="app_task_type_tab"/>
     </changeSet>
 </databaseChangeLog>

@@ -18,11 +18,11 @@
         Added the entity TaskLog.
     -->
     <changeSet id="20151014174836" author="jhipster">
-        <createTable tableName="task_log">
+        <createTable tableName="app_task_log_tab">
             <column name="id" type="bigint" autoIncrement="${autoIncrement}" >
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="message" type="varchar(255)">
+            <column name="message" type="varchar(1000)">
                 <constraints nullable="false" />
             </column>
             <column name="created_on" type="timestamp">
@@ -30,14 +30,14 @@
             </column>
             <column name="task_id" type="bigint"/>
         </createTable>
-        <dropDefaultValue tableName="task_log" columnName="created_on" columnDataType="datetime"/>
+        <dropDefaultValue tableName="app_task_log_tab" columnName="created_on" columnDataType="datetime"/>
 
-        
+
         <addForeignKeyConstraint baseColumnNames="task_id"
-                                 baseTableName="task_log"
+                                 baseTableName="app_task_log_tab"
                                  constraintName="fk_tasklog_task_id"
                                  referencedColumnNames="id"
-                                 referencedTableName="task"/>
+                                 referencedTableName="app_task_tab"/>
 
     </changeSet>
 </databaseChangeLog>

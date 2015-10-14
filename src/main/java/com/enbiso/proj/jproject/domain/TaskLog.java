@@ -20,7 +20,7 @@ import java.util.Objects;
  * A TaskLog.
  */
 @Entity
-@Table(name = "task_log")
+@Table(name = "app_task_log_tab")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 public class TaskLog implements Serializable {
 
@@ -29,11 +29,11 @@ public class TaskLog implements Serializable {
     private Long id;
 
 
-    @NotNull        
+    @NotNull
     @Column(name = "message", nullable = false)
     private String message;
 
-    @NotNull        
+    @NotNull
     @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentDateTime")
     @JsonSerialize(using = CustomDateTimeSerializer.class)
     @JsonDeserialize(using = CustomDateTimeDeserializer.class)

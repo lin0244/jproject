@@ -20,7 +20,7 @@ import java.util.Objects;
  * A TaskComment.
  */
 @Entity
-@Table(name = "task_comment")
+@Table(name = "app_task_comment_tab")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 public class TaskComment implements Serializable {
 
@@ -29,11 +29,11 @@ public class TaskComment implements Serializable {
     private Long id;
 
 
-    @NotNull        
+    @NotNull
     @Column(name = "content", nullable = false)
     private String content;
 
-    @NotNull        
+    @NotNull
     @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentDateTime")
     @JsonSerialize(using = CustomDateTimeSerializer.class)
     @JsonDeserialize(using = CustomDateTimeDeserializer.class)

@@ -14,7 +14,7 @@ import java.util.Objects;
  * A Team.
  */
 @Entity
-@Table(name = "team")
+@Table(name = "app_team_tab")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 public class Team implements Serializable {
 
@@ -23,7 +23,7 @@ public class Team implements Serializable {
     private Long id;
 
 
-    @NotNull        
+    @NotNull
     @Column(name = "name", nullable = false)
     private String name;
 

@@ -15,7 +15,7 @@ import java.util.Objects;
  * A TaskPriority.
  */
 @Entity
-@Table(name = "task_priority")
+@Table(name = "app_task_priority_tab")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 public class TaskPriority implements Serializable {
 
@@ -24,14 +24,14 @@ public class TaskPriority implements Serializable {
     private Long id;
 
 
-    @NotNull        
+    @NotNull
     @Column(name = "code", nullable = false)
     private Integer code;
 
-    @NotNull        
+    @NotNull
     @Column(name = "title", nullable = false)
     private String title;
-    
+
     @Column(name = "description")
     private String description;
 

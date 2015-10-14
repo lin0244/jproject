@@ -21,7 +21,7 @@ import java.util.Objects;
  * A Iteration.
  */
 @Entity
-@Table(name = "iteration")
+@Table(name = "app_iteration_tab")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 public class Iteration implements Serializable {
 
@@ -30,18 +30,18 @@ public class Iteration implements Serializable {
     private Long id;
 
 
-    @NotNull        
+    @NotNull
     @Column(name = "title", nullable = false)
     private String title;
 
-    @NotNull        
+    @NotNull
     @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentDateTime")
     @JsonSerialize(using = CustomDateTimeSerializer.class)
     @JsonDeserialize(using = CustomDateTimeDeserializer.class)
     @Column(name = "start_date", nullable = false)
     private DateTime startDate;
 
-    @NotNull        
+    @NotNull
     @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentDateTime")
     @JsonSerialize(using = CustomDateTimeSerializer.class)
     @JsonDeserialize(using = CustomDateTimeDeserializer.class)

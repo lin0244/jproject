@@ -18,7 +18,7 @@
         Added the entity Team.
     -->
     <changeSet id="20151014174836" author="jhipster">
-        <createTable tableName="team">
+        <createTable tableName="app_team_tab">
             <column name="id" type="bigint" autoIncrement="${autoIncrement}" >
                 <constraints primaryKey="true" nullable="false"/>
             </column>
@@ -27,12 +27,12 @@
             </column>
             <column name="iteration_id" type="bigint"/>
         </createTable>
-        
+
         <addForeignKeyConstraint baseColumnNames="iteration_id"
-                                 baseTableName="team"
+                                 baseTableName="app_team_tab"
                                  constraintName="fk_team_iteration_id"
                                  referencedColumnNames="id"
-                                 referencedTableName="iteration"/>
+                                 referencedTableName="app_iteration_tab"/>
 
         <createTable tableName="team_member">
             <column name="members_id" type="bigint">
@@ -49,13 +49,13 @@
                                  baseTableName="team_member"
                                  constraintName="fk_team_member_person_id"
                                  referencedColumnNames="id"
-                                 referencedTableName="team"/>
+                                 referencedTableName="app_team_tab"/>
 
         <addForeignKeyConstraint baseColumnNames="members_id"
                                  baseTableName="team_member"
                                  constraintName="fk_person_member_team_id"
                                  referencedColumnNames="id"
-                                 referencedTableName="person"/>
-        
+                                 referencedTableName="app_person_tab"/>
+
     </changeSet>
 </databaseChangeLog>

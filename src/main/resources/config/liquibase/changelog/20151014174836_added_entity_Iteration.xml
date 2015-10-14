@@ -18,7 +18,7 @@
         Added the entity Iteration.
     -->
     <changeSet id="20151014174836" author="jhipster">
-        <createTable tableName="iteration">
+        <createTable tableName="app_iteration_tab">
             <column name="id" type="bigint" autoIncrement="${autoIncrement}" >
                 <constraints primaryKey="true" nullable="false"/>
             </column>
@@ -33,16 +33,16 @@
             </column>
             <column name="project_id" type="bigint"/>
         </createTable>
-        <dropDefaultValue tableName="iteration" columnName="start_date" columnDataType="datetime"/>
+        <dropDefaultValue tableName="app_iteration_tab" columnName="start_date" columnDataType="datetime"/>
 
-        <dropDefaultValue tableName="iteration" columnName="end_date" columnDataType="datetime"/>
+        <dropDefaultValue tableName="app_iteration_tab" columnName="end_date" columnDataType="datetime"/>
 
-        
+
         <addForeignKeyConstraint baseColumnNames="project_id"
-                                 baseTableName="iteration"
+                                 baseTableName="app_iteration_tab"
                                  constraintName="fk_iteration_project_id"
                                  referencedColumnNames="id"
-                                 referencedTableName="project"/>
+                                 referencedTableName="app_project_tab"/>
 
     </changeSet>
 </databaseChangeLog>

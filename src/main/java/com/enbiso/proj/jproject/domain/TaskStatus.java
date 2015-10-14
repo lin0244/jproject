@@ -17,7 +17,7 @@ import com.enbiso.proj.jproject.domain.enumeration.TaskStatusState;
  * A TaskStatus.
  */
 @Entity
-@Table(name = "task_status")
+@Table(name = "app_task_status_tab")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 public class TaskStatus implements Serializable {
 
@@ -26,15 +26,15 @@ public class TaskStatus implements Serializable {
     private Long id;
 
 
-    @NotNull        
+    @NotNull
     @Column(name = "title", nullable = false)
     private String title;
 
-    @NotNull        
+    @NotNull
     @Enumerated(EnumType.STRING)
     @Column(name = "status", nullable = false)
     private TaskStatusState status;
-    
+
     @Column(name = "description")
     private String description;
 
