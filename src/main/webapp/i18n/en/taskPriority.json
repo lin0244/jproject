@@ -1,0 +1,24 @@
+{
+    "jprojectApp": {
+        "taskPriority" : {
+            "home": {
+                "title": "TaskPrioritys",
+                "createLabel": "Create a new TaskPriority",
+                "createOrEditLabel": "Create or edit a TaskPriority"
+            },
+            "created": "A new TaskPriority is created with identifier {{ param }}",
+            "updated": "A TaskPriority is updated with identifier {{ param }}",
+            "deleted": "A TaskPriority is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete TaskPriority {{ id }}?"
+            },
+            "detail": {
+                "title": "TaskPriority"
+            },
+            "code": "Code",
+            "title": "Title",
+            "description": "Description",
+            "task": "Task"
+        }
+    }
+}

@@ -1,0 +1,76 @@
+
+<form name="editForm" role="form" novalidate ng-submit="save()" show-validation>
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="clear()">&times;</button>
+        <h4 class="modal-title" id="myIterationLabel" translate="jprojectApp.iteration.home.createOrEditLabel">Create or edit a Iteration</h4>
+    </div>
+    <div class="modal-body">
+        <jh-alert-error></jh-alert-error>
+        <div class="form-group">
+            <label for="id" translate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="iteration.id" readonly>
+        </div>
+        <div class="form-group">
+            <label translate="jprojectApp.iteration.title" for="field_title">Title</label>
+            <input type="text" class="form-control" name="title" id="field_title"
+                    ng-model="iteration.title"
+                    required>
+            <div ng-show="editForm.title.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.title.$error.required" translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label translate="jprojectApp.iteration.startDate" for="field_startDate">StartDate</label>
+            <input type="datetime-local" class="form-control" name="startDate" id="field_startDate"
+                    ng-model="iteration.startDate" ng-model-options="{timezone: 'UTC'}"
+                    required>
+            <div ng-show="editForm.startDate.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.startDate.$error.required" translate="entity.validation.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.startDate.$error.datetimelocal" translate="entity.validation.datetimelocal">
+                    This field should be a date and time.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label translate="jprojectApp.iteration.endDate" for="field_endDate">EndDate</label>
+            <input type="datetime-local" class="form-control" name="endDate" id="field_endDate"
+                    ng-model="iteration.endDate" ng-model-options="{timezone: 'UTC'}"
+                    required>
+            <div ng-show="editForm.endDate.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.endDate.$error.required" translate="entity.validation.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.endDate.$error.datetimelocal" translate="entity.validation.datetimelocal">
+                    This field should be a date and time.
+                </p>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label translate="jprojectApp.iteration.project" for="field_project">project</label>
+            <select class="form-control" id="field_project" name="project" ng-model="iteration.project" ng-options="project as project.code for project in projects track by project.id">
+                <option value=""></option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span translate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || editForm.$submitted" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span translate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

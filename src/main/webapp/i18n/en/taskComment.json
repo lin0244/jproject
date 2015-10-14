@@ -1,0 +1,24 @@
+{
+    "jprojectApp": {
+        "taskComment" : {
+            "home": {
+                "title": "TaskComments",
+                "createLabel": "Create a new TaskComment",
+                "createOrEditLabel": "Create or edit a TaskComment"
+            },
+            "created": "A new TaskComment is created with identifier {{ param }}",
+            "updated": "A TaskComment is updated with identifier {{ param }}",
+            "deleted": "A TaskComment is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete TaskComment {{ id }}?"
+            },
+            "detail": {
+                "title": "TaskComment"
+            },
+            "content": "Content",
+            "postedOn": "PostedOn",
+            "commenter": "Commenter",
+            "task": "Task"
+        }
+    }
+}

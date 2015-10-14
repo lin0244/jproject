@@ -6,6 +6,17 @@
             "home": "Home",
             "entities": {
                 "main": "Entities",
+                "project": "Project",
+                "iteration": "Iteration",
+                "person": "Person",
+                "taskType": "TaskType",
+                "taskStatus": "TaskStatus",
+                "taskPriority": "TaskPriority",
+                "taskImportance": "TaskImportance",
+                "task": "Task",
+                "taskComment": "TaskComment",
+                "taskLog": "TaskLog",
+                "team": "Team",
                 "additionalEntity": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {

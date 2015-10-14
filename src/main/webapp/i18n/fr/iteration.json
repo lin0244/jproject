@@ -1,0 +1,24 @@
+{
+    "jprojectApp": {
+        "iteration" : {
+            "home": {
+                "title": "Iterations",
+                "createLabel": "Créer un nouveau Iteration",
+                "createOrEditLabel": "Créer ou éditer un Iteration"
+            },
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Iteration {{ id }} ?"
+            },
+            "detail": {
+                "title": "Iteration"
+            },
+            "title": "Title",
+            "startDate": "StartDate",
+            "endDate": "EndDate",
+            "project": "Project",
+            "team": "Team",
+            "task": "Task"
+        }
+    }
+}
+

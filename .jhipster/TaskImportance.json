@@ -1,0 +1,38 @@
+{
+  "relationships": [
+    {
+      "relationshipId": 1,
+      "relationshipName": "task",
+      "relationshipFieldName": "task",
+      "otherEntityName": "task",
+      "relationshipType": "one-to-many",
+      "otherEntityRelationshipName": "importance"
+    }
+  ],
+  "fields": [
+    {
+      "fieldId": 1,
+      "fieldName": "code",
+      "fieldType": "Integer",
+      "fieldValidateRules": [
+        "required"
+      ]
+    },
+    {
+      "fieldId": 2,
+      "fieldName": "title",
+      "fieldType": "String",
+      "fieldValidateRules": [
+        "required"
+      ]
+    },
+    {
+      "fieldId": 3,
+      "fieldName": "description",
+      "fieldType": "String"
+    }
+  ],
+  "changelogDate": "20151014174836",
+  "dto": "no",
+  "pagination": "no"
+}

@@ -1,0 +1,46 @@
+
+<div>
+    <h2><span translate="jprojectApp.taskImportance.detail.title">TaskImportance</span> {{taskImportance.id}}</h2>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th translate="entity.detail.field">Field</th>
+                <th translate="entity.detail.value">Value</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>
+                    <span translate="jprojectApp.taskImportance.code">Code</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{taskImportance.code}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="jprojectApp.taskImportance.title">Title</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{taskImportance.title}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="jprojectApp.taskImportance.description">Description</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{taskImportance.description}}</span>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <button type="submit"
+            onclick="window.history.back()"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span translate="entity.action.back"> Back</span>
+    </button>
+</div>

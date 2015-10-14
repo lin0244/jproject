@@ -1,0 +1,94 @@
+
+<div>
+    <h2><span translate="jprojectApp.task.detail.title">Task</span> {{task.id}}</h2>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th translate="entity.detail.field">Field</th>
+                <th translate="entity.detail.value">Value</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>
+                    <span translate="jprojectApp.task.title">Title</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{task.title}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="jprojectApp.task.iteration">iteration</span>
+                </td>
+                <td>
+                    <a class="form-control-static" ui-sref="iteration.detail({id:task.iteration.id})">{{task.iteration.title}}</a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="jprojectApp.task.assignee">assignee</span>
+                </td>
+                <td>
+                    <a class="form-control-static" ui-sref="person.detail({id:task.assignee.id})">{{task.assignee.name}}</a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="jprojectApp.task.owner">owner</span>
+                </td>
+                <td>
+                    <a class="form-control-static" ui-sref="person.detail({id:task.owner.id})">{{task.owner.name}}</a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="jprojectApp.task.type">type</span>
+                </td>
+                <td>
+                    <a class="form-control-static" ui-sref="taskType.detail({id:task.type.id})">{{task.type.title}}</a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="jprojectApp.task.status">status</span>
+                </td>
+                <td>
+                    <a class="form-control-static" ui-sref="taskStatus.detail({id:task.status.id})">{{task.status.title}}</a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="jprojectApp.task.priority">priority</span>
+                </td>
+                <td>
+                    <a class="form-control-static" ui-sref="taskPriority.detail({id:task.priority.id})">{{task.priority.title}}</a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="jprojectApp.task.importance">importance</span>
+                </td>
+                <td>
+                    <a class="form-control-static" ui-sref="taskImportance.detail({id:task.importance.id})">{{task.importance.title}}</a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="jprojectApp.task.parentTask">parentTask</span>
+                </td>
+                <td>
+                    <a class="form-control-static" ui-sref="task.detail({id:task.parentTask.id})">{{task.parentTask.id}}</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <button type="submit"
+            onclick="window.history.back()"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span translate="entity.action.back"> Back</span>
+    </button>
+</div>

@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+    <property name="now" value="now()" dbms="mysql,h2"/>
+    <property name="now" value="current_timestamp" dbms="postgresql"/>
+    <property name="now" value="sysdate" dbms="oracle"/>
+
+    <property name="autoIncrement" value="true" dbms="mysql,h2,postgresql"/>
+    <property name="autoIncrement" value="false" dbms="oracle"/>
+
+    <property name="floatType" value="float4" dbms="postgresql, h2"/>
+    <property name="floatType" value="float" dbms="mysql, oracle"/>
+
+    <!--
+        Added the entity Task.
+    -->
+    <changeSet id="20151014174836" author="jhipster">
+        <createTable tableName="task">
+            <column name="id" type="bigint" autoIncrement="${autoIncrement}" >
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="title" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="iteration_id" type="bigint"/>
+            <column name="assignee_id" type="bigint"/>
+            <column name="owner_id" type="bigint"/>
+            <column name="type_id" type="bigint"/>
+            <column name="status_id" type="bigint"/>
+            <column name="priority_id" type="bigint"/>
+            <column name="importance_id" type="bigint"/>
+            <column name="parent_task_id" type="bigint"/>
+        </createTable>
+        
+        <addForeignKeyConstraint baseColumnNames="iteration_id"
+                                 baseTableName="task"
+                                 constraintName="fk_task_iteration_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="iteration"/>
+
+        <addForeignKeyConstraint baseColumnNames="assignee_id"
+                                 baseTableName="task"
+                                 constraintName="fk_task_assignee_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="person"/>
+
+        <addForeignKeyConstraint baseColumnNames="owner_id"
+                                 baseTableName="task"
+                                 constraintName="fk_task_owner_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="person"/>
+
+        <addForeignKeyConstraint baseColumnNames="type_id"
+                                 baseTableName="task"
+                                 constraintName="fk_task_type_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="task_type"/>
+
+        <addForeignKeyConstraint baseColumnNames="status_id"
+                                 baseTableName="task"
+                                 constraintName="fk_task_status_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="task_status"/>
+
+        <addForeignKeyConstraint baseColumnNames="priority_id"
+                                 baseTableName="task"
+                                 constraintName="fk_task_priority_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="task_priority"/>
+
+        <addForeignKeyConstraint baseColumnNames="importance_id"
+                                 baseTableName="task"
+                                 constraintName="fk_task_importance_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="task_importance"/>
+
+        <addForeignKeyConstraint baseColumnNames="parent_task_id"
+                                 baseTableName="task"
+                                 constraintName="fk_task_parenttask_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="task"/>
+
+    </changeSet>
+</databaseChangeLog>

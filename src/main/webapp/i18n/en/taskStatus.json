@@ -1,0 +1,24 @@
+{
+    "jprojectApp": {
+        "taskStatus" : {
+            "home": {
+                "title": "TaskStatuss",
+                "createLabel": "Create a new TaskStatus",
+                "createOrEditLabel": "Create or edit a TaskStatus"
+            },
+            "created": "A new TaskStatus is created with identifier {{ param }}",
+            "updated": "A TaskStatus is updated with identifier {{ param }}",
+            "deleted": "A TaskStatus is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete TaskStatus {{ id }}?"
+            },
+            "detail": {
+                "title": "TaskStatus"
+            },
+            "title": "Title",
+            "status": "Status",
+            "description": "Description",
+            "task": "Task"
+        }
+    }
+}

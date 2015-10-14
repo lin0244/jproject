@@ -1,0 +1,58 @@
+
+<form name="editForm" role="form" novalidate ng-submit="save()" show-validation>
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="clear()">&times;</button>
+        <h4 class="modal-title" id="myPersonLabel" translate="jprojectApp.person.home.createOrEditLabel">Create or edit a Person</h4>
+    </div>
+    <div class="modal-body">
+        <jh-alert-error></jh-alert-error>
+        <div class="form-group">
+            <label for="id" translate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="person.id" readonly>
+        </div>
+        <div class="form-group">
+            <label translate="jprojectApp.person.name" for="field_name">Name</label>
+            <input type="text" class="form-control" name="name" id="field_name"
+                    ng-model="person.name"
+                    required>
+            <div ng-show="editForm.name.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.name.$error.required" translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label translate="jprojectApp.person.email" for="field_email">Email</label>
+            <input type="text" class="form-control" name="email" id="field_email"
+                    ng-model="person.email"
+                    ng-minlength="5" ng-maxlength="100" ng-pattern="/[\\w]*@[a-zA-Z]*.com/">
+            <div ng-show="editForm.email.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.email.$error.minlength" translate="entity.validation.minlength" translate-value-min="5">
+                    This field is required to be at least 5 characters.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.email.$error.maxlength" translate="entity.validation.maxlength" translate-value-max="100">
+                    This field cannot be longer than 100 characters.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.email.$error.pattern" translate="entity.validation.pattern" translate-value-pattern="[\\w]*@[a-zA-Z]*.com">
+                    This field should follow pattern "[\\w]*@[a-zA-Z]*.com".
+                </p>
+            </div>
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span translate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || editForm.$submitted" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span translate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

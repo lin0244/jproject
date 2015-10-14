@@ -1,0 +1,86 @@
+
+<form name="editForm" role="form" novalidate ng-submit="save()" show-validation>
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="clear()">&times;</button>
+        <h4 class="modal-title" id="myTaskLabel" translate="jprojectApp.task.home.createOrEditLabel">Create or edit a Task</h4>
+    </div>
+    <div class="modal-body">
+        <jh-alert-error></jh-alert-error>
+        <div class="form-group">
+            <label for="id" translate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="task.id" readonly>
+        </div>
+        <div class="form-group">
+            <label translate="jprojectApp.task.title" for="field_title">Title</label>
+            <input type="text" class="form-control" name="title" id="field_title"
+                    ng-model="task.title"
+                    required>
+            <div ng-show="editForm.title.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.title.$error.required" translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label translate="jprojectApp.task.iteration" for="field_iteration">iteration</label>
+            <select class="form-control" id="field_iteration" name="iteration" ng-model="task.iteration" ng-options="iteration as iteration.title for iteration in iterations track by iteration.id">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label translate="jprojectApp.task.assignee" for="field_assignee">assignee</label>
+            <select class="form-control" id="field_assignee" name="assignee" ng-model="task.assignee" ng-options="person as person.name for person in persons track by person.id">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label translate="jprojectApp.task.owner" for="field_owner">owner</label>
+            <select class="form-control" id="field_owner" name="owner" ng-model="task.owner" ng-options="person as person.name for person in persons track by person.id">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label translate="jprojectApp.task.type" for="field_type">type</label>
+            <select class="form-control" id="field_type" name="type" ng-model="task.type" ng-options="taskType as taskType.title for taskType in tasktypes track by taskType.id">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label translate="jprojectApp.task.status" for="field_status">status</label>
+            <select class="form-control" id="field_status" name="status" ng-model="task.status" ng-options="taskStatus as taskStatus.title for taskStatus in taskstatuss track by taskStatus.id">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label translate="jprojectApp.task.priority" for="field_priority">priority</label>
+            <select class="form-control" id="field_priority" name="priority" ng-model="task.priority" ng-options="taskPriority as taskPriority.title for taskPriority in taskprioritys track by taskPriority.id">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label translate="jprojectApp.task.importance" for="field_importance">importance</label>
+            <select class="form-control" id="field_importance" name="importance" ng-model="task.importance" ng-options="taskImportance as taskImportance.title for taskImportance in taskimportances track by taskImportance.id">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label translate="jprojectApp.task.parentTask" for="field_parentTask">parentTask</label>
+            <select class="form-control" id="field_parentTask" name="parentTask" ng-model="task.parentTask" ng-options="task as task.id for task in tasks track by task.id">
+                <option value=""></option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span translate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || editForm.$submitted" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span translate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

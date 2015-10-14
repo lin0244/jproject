@@ -1,0 +1,34 @@
+{
+  "relationships": [
+    {
+      "relationshipId": 1,
+      "relationshipName": "iteration",
+      "relationshipFieldName": "iteration",
+      "otherEntityName": "iteration",
+      "relationshipType": "many-to-one",
+      "otherEntityField": "title"
+    },
+    {
+      "relationshipId": 2,
+      "relationshipName": "member",
+      "relationshipFieldName": "member",
+      "otherEntityName": "person",
+      "relationshipType": "many-to-many",
+      "otherEntityField": "name",
+      "ownerSide": true
+    }
+  ],
+  "fields": [
+    {
+      "fieldId": 1,
+      "fieldName": "name",
+      "fieldType": "String",
+      "fieldValidateRules": [
+        "required"
+      ]
+    }
+  ],
+  "changelogDate": "20151014174836",
+  "dto": "no",
+  "pagination": "no"
+}

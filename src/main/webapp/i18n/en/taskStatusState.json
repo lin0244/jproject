@@ -1,0 +1,10 @@
+{
+    "jprojectApp": {
+        "TaskStatusState" : {
+            "null": "",
+            "NEW": "NEW",
+            "OPEN": "OPEN",
+            "CLOSE": "CLOSE"
+        }
+    }
+}

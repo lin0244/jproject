@@ -1,0 +1,35 @@
+{
+  "relationships": [
+    {
+      "relationshipId": 1,
+      "relationshipName": "task",
+      "relationshipFieldName": "task",
+      "otherEntityName": "task",
+      "relationshipType": "many-to-one",
+      "otherEntityField": "id"
+    }
+  ],
+  "fields": [
+    {
+      "fieldId": 1,
+      "fieldName": "message",
+      "fieldType": "String",
+      "fieldValidateRules": [
+        "required"
+      ]
+    },
+    {
+      "fieldId": 2,
+      "fieldName": "createdOn",
+      "fieldType": "DateTime",
+      "fieldValidateRules": [
+        "required"
+      ]
+    }
+  ],
+  "changelogDate": "20151014174836",
+  "dto": "no",
+  "pagination": "no",
+  "fieldsContainDateTime": true,
+  "fieldsContainCustomTime": true
+}

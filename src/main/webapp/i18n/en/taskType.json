@@ -1,0 +1,23 @@
+{
+    "jprojectApp": {
+        "taskType" : {
+            "home": {
+                "title": "TaskTypes",
+                "createLabel": "Create a new TaskType",
+                "createOrEditLabel": "Create or edit a TaskType"
+            },
+            "created": "A new TaskType is created with identifier {{ param }}",
+            "updated": "A TaskType is updated with identifier {{ param }}",
+            "deleted": "A TaskType is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete TaskType {{ id }}?"
+            },
+            "detail": {
+                "title": "TaskType"
+            },
+            "title": "Title",
+            "description": "Description",
+            "task": "Task"
+        }
+    }
+}

@@ -1,0 +1,63 @@
+{
+  "relationships": [
+    {
+      "relationshipId": 1,
+      "relationshipName": "team",
+      "relationshipFieldName": "team",
+      "otherEntityName": "team",
+      "relationshipType": "many-to-many",
+      "ownerSide": false,
+      "otherEntityRelationshipName": "member"
+    },
+    {
+      "relationshipId": 2,
+      "relationshipName": "assginedTask",
+      "relationshipFieldName": "assginedTask",
+      "otherEntityName": "task",
+      "relationshipType": "one-to-many",
+      "otherEntityRelationshipName": "assignee"
+    },
+    {
+      "relationshipId": 3,
+      "relationshipName": "owningTask",
+      "relationshipFieldName": "owningTask",
+      "otherEntityName": "task",
+      "relationshipType": "one-to-many",
+      "otherEntityRelationshipName": "owner"
+    },
+    {
+      "relationshipId": 4,
+      "relationshipName": "comment",
+      "relationshipFieldName": "comment",
+      "otherEntityName": "taskComment",
+      "relationshipType": "one-to-many",
+      "otherEntityRelationshipName": "commenter"
+    }
+  ],
+  "fields": [
+    {
+      "fieldId": 1,
+      "fieldName": "name",
+      "fieldType": "String",
+      "fieldValidateRules": [
+        "required"
+      ]
+    },
+    {
+      "fieldId": 2,
+      "fieldName": "email",
+      "fieldType": "String",
+      "fieldValidateRules": [
+        "maxlength",
+        "minlength",
+        "pattern"
+      ],
+      "fieldValidateRulesMaxlength": 100,
+      "fieldValidateRulesMinlength": 5,
+      "fieldValidateRulesPattern": "[\\\\w]*@[a-zA-Z]*.com"
+    }
+  ],
+  "changelogDate": "20151014174836",
+  "dto": "no",
+  "pagination": "no"
+}

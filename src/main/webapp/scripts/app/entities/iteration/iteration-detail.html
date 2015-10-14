@@ -1,0 +1,54 @@
+
+<div>
+    <h2><span translate="jprojectApp.iteration.detail.title">Iteration</span> {{iteration.id}}</h2>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th translate="entity.detail.field">Field</th>
+                <th translate="entity.detail.value">Value</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>
+                    <span translate="jprojectApp.iteration.title">Title</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{iteration.title}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="jprojectApp.iteration.startDate">StartDate</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{iteration.startDate}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="jprojectApp.iteration.endDate">EndDate</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{iteration.endDate}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="jprojectApp.iteration.project">project</span>
+                </td>
+                <td>
+                    <a class="form-control-static" ui-sref="project.detail({id:iteration.project.id})">{{iteration.project.code}}</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <button type="submit"
+            onclick="window.history.back()"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span translate="entity.action.back"> Back</span>
+    </button>
+</div>

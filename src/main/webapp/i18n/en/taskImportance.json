@@ -1,0 +1,24 @@
+{
+    "jprojectApp": {
+        "taskImportance" : {
+            "home": {
+                "title": "TaskImportances",
+                "createLabel": "Create a new TaskImportance",
+                "createOrEditLabel": "Create or edit a TaskImportance"
+            },
+            "created": "A new TaskImportance is created with identifier {{ param }}",
+            "updated": "A TaskImportance is updated with identifier {{ param }}",
+            "deleted": "A TaskImportance is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete TaskImportance {{ id }}?"
+            },
+            "detail": {
+                "title": "TaskImportance"
+            },
+            "code": "Code",
+            "title": "Title",
+            "description": "Description",
+            "task": "Task"
+        }
+    }
+}

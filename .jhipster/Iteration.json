@@ -1,0 +1,59 @@
+{
+  "relationships": [
+    {
+      "relationshipId": 1,
+      "relationshipName": "project",
+      "relationshipFieldName": "project",
+      "otherEntityName": "project",
+      "relationshipType": "many-to-one",
+      "otherEntityField": "code"
+    },
+    {
+      "relationshipId": 2,
+      "relationshipName": "team",
+      "relationshipFieldName": "team",
+      "otherEntityName": "team",
+      "relationshipType": "one-to-many",
+      "otherEntityRelationshipName": "iteration"
+    },
+    {
+      "relationshipId": 3,
+      "relationshipName": "task",
+      "relationshipFieldName": "task",
+      "otherEntityName": "task",
+      "relationshipType": "one-to-many",
+      "otherEntityRelationshipName": "iteration"
+    }
+  ],
+  "fields": [
+    {
+      "fieldId": 1,
+      "fieldName": "title",
+      "fieldType": "String",
+      "fieldValidateRules": [
+        "required"
+      ]
+    },
+    {
+      "fieldId": 2,
+      "fieldName": "startDate",
+      "fieldType": "DateTime",
+      "fieldValidateRules": [
+        "required"
+      ]
+    },
+    {
+      "fieldId": 3,
+      "fieldName": "endDate",
+      "fieldType": "DateTime",
+      "fieldValidateRules": [
+        "required"
+      ]
+    }
+  ],
+  "changelogDate": "20151014174836",
+  "dto": "no",
+  "pagination": "no",
+  "fieldsContainDateTime": true,
+  "fieldsContainCustomTime": true
+}

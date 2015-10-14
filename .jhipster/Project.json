@@ -1,0 +1,33 @@
+{
+  "relationships": [
+    {
+      "relationshipId": 1,
+      "relationshipName": "iteration",
+      "relationshipFieldName": "iteration",
+      "otherEntityName": "iteration",
+      "relationshipType": "one-to-many",
+      "otherEntityRelationshipName": "project"
+    }
+  ],
+  "fields": [
+    {
+      "fieldId": 1,
+      "fieldName": "code",
+      "fieldType": "String",
+      "fieldValidateRules": [
+        "maxlength",
+        "minlength"
+      ],
+      "fieldValidateRulesMaxlength": 6,
+      "fieldValidateRulesMinlength": 6
+    },
+    {
+      "fieldId": 2,
+      "fieldName": "name",
+      "fieldType": "String"
+    }
+  ],
+  "changelogDate": "20151014174836",
+  "dto": "no",
+  "pagination": "no"
+}

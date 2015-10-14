@@ -1,0 +1,30 @@
+{
+    "jprojectApp": {
+        "task" : {
+            "home": {
+                "title": "Tasks",
+                "createLabel": "Créer un nouveau Task",
+                "createOrEditLabel": "Créer ou éditer un Task"
+            },
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Task {{ id }} ?"
+            },
+            "detail": {
+                "title": "Task"
+            },
+            "title": "Title",
+            "iteration": "Iteration",
+            "assignee": "Assignee",
+            "owner": "Owner",
+            "type": "Type",
+            "status": "Status",
+            "priority": "Priority",
+            "importance": "Importance",
+            "subTask": "SubTask",
+            "parentTask": "ParentTask",
+            "comment": "Comment",
+            "log": "Log"
+        }
+    }
+}
+

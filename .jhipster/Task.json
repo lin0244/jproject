@@ -1,0 +1,105 @@
+{
+  "relationships": [
+    {
+      "relationshipId": 1,
+      "relationshipName": "iteration",
+      "relationshipFieldName": "iteration",
+      "otherEntityName": "iteration",
+      "relationshipType": "many-to-one",
+      "otherEntityField": "title"
+    },
+    {
+      "relationshipId": 2,
+      "relationshipName": "assignee",
+      "relationshipFieldName": "assignee",
+      "otherEntityName": "person",
+      "relationshipType": "many-to-one",
+      "otherEntityField": "name"
+    },
+    {
+      "relationshipId": 3,
+      "relationshipName": "owner",
+      "relationshipFieldName": "owner",
+      "otherEntityName": "person",
+      "relationshipType": "many-to-one",
+      "otherEntityField": "name"
+    },
+    {
+      "relationshipId": 4,
+      "relationshipName": "type",
+      "relationshipFieldName": "type",
+      "otherEntityName": "taskType",
+      "relationshipType": "many-to-one",
+      "otherEntityField": "title"
+    },
+    {
+      "relationshipId": 5,
+      "relationshipName": "status",
+      "relationshipFieldName": "status",
+      "otherEntityName": "taskStatus",
+      "relationshipType": "many-to-one",
+      "otherEntityField": "title"
+    },
+    {
+      "relationshipId": 6,
+      "relationshipName": "priority",
+      "relationshipFieldName": "priority",
+      "otherEntityName": "taskPriority",
+      "relationshipType": "many-to-one",
+      "otherEntityField": "title"
+    },
+    {
+      "relationshipId": 7,
+      "relationshipName": "importance",
+      "relationshipFieldName": "importance",
+      "otherEntityName": "taskImportance",
+      "relationshipType": "many-to-one",
+      "otherEntityField": "title"
+    },
+    {
+      "relationshipId": 8,
+      "relationshipName": "subTask",
+      "relationshipFieldName": "subTask",
+      "otherEntityName": "task",
+      "relationshipType": "one-to-many",
+      "otherEntityRelationshipName": "parentTask"
+    },
+    {
+      "relationshipId": 9,
+      "relationshipName": "parentTask",
+      "relationshipFieldName": "parentTask",
+      "otherEntityName": "task",
+      "relationshipType": "many-to-one",
+      "otherEntityField": "id"
+    },
+    {
+      "relationshipId": 10,
+      "relationshipName": "comment",
+      "relationshipFieldName": "comment",
+      "otherEntityName": "taskComment",
+      "relationshipType": "one-to-many",
+      "otherEntityRelationshipName": "task"
+    },
+    {
+      "relationshipId": 11,
+      "relationshipName": "log",
+      "relationshipFieldName": "log",
+      "otherEntityName": "taskLog",
+      "relationshipType": "one-to-many",
+      "otherEntityRelationshipName": "task"
+    }
+  ],
+  "fields": [
+    {
+      "fieldId": 1,
+      "fieldName": "title",
+      "fieldType": "String",
+      "fieldValidateRules": [
+        "required"
+      ]
+    }
+  ],
+  "changelogDate": "20151014174836",
+  "dto": "no",
+  "pagination": "no"
+}
