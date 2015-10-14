@@ -1,0 +1,124 @@
+entity Customer {
+    name String required,
+    address String,
+    email String maxlength(100) minlength(5) pattern("[\\w]*@[a-zA-Z]*.com"),
+    phone String
+}
+
+entity Project {
+    code String maxlength(6) minlength(6),
+    name String
+}
+
+relationship OneToMany {
+    Customer{project} to Project{customer(name)}
+}
+
+entity Iteration {
+    title String required,
+    startDate DateTime required,
+    endDate DateTime required
+}
+
+relationship OneToMany {
+    Project{iteration} to Iteration{project(code)}
+}
+
+entity Team {
+    name String required
+}
+
+relationship OneToMany {
+    Iteration{team} to Team{iteration(title)}
+}
+
+entity Person {
+    name String required,
+    email String maxlength(100) minlength(5) pattern("[\\w]*@[a-zA-Z]*.com")
+}
+
+relationship ManyToMany {
+    Team{member(name)} to Person{team}
+}
+
+entity TaskType {
+    title String required,
+    description String
+}
+
+enum TaskStatusState {
+    NEW, OPEN, CLOSE
+}
+
+entity TaskStatus {
+    title String required,
+    status TaskStatusState required,
+    description String
+}
+
+entity TaskPriority {
+    code Integer required,
+    title String required,
+    description String
+}
+
+entity TaskImportance {
+    code Integer required,
+    title String required,
+    description String
+}
+
+entity Task {
+    title String required
+}
+
+relationship OneToMany {
+    Person{assginedTask} to Task{assignee(name)}
+}
+
+relationship OneToMany {
+    Person{owningTask} to Task{owner(name)}
+}
+
+relationship OneToMany {
+    TaskType{task} to Task{type(title)}
+}
+
+relationship OneToMany {
+    TaskStatus{task} to Task{status(title)}
+}
+
+relationship OneToMany {
+    TaskPriority{task} to Task{priority(title)}
+}
+
+relationship OneToMany {
+    TaskImportance{task} to Task{importance(title)}
+}
+
+relationship OneToMany {
+    Iteration{task} to Task{iteration(title)}
+}
+
+entity TaskComment {
+    content String required,
+    postedOn DateTime required
+}
+
+relationship OneToMany {
+    Task{comment} to TaskComment{task}
+}
+
+relationship OneToMany {
+    Person{comment} to TaskComment { commenter(name) }
+}
+
+entity TaskLog {
+    message String required,
+    createdOn DateTime required
+}
+
+relationship OneToMany {
+    Task{log} to TaskLog{task}
+}
+
