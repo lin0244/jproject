@@ -14,22 +14,6 @@
                     ng-model="taskPriority.id" readonly>
         </div>
         <div class="form-group">
-            <label translate="jprojectApp.taskPriority.code" for="field_code">Code</label>
-            <input type="number" class="form-control" name="code" id="field_code"
-                    ng-model="taskPriority.code"
-                    required>
-            <div ng-show="editForm.code.$invalid">
-                <p class="help-block"
-                    ng-show="editForm.code.$error.required" translate="entity.validation.required">
-                    This field is required.
-                </p>
-                <p class="help-block"
-                    ng-show="editForm.code.$error.number" translate="entity.validation.number">
-                    This field should be a number.
-                </p>
-            </div>
-        </div>
-        <div class="form-group">
             <label translate="jprojectApp.taskPriority.title" for="field_title">Title</label>
             <input type="text" class="form-control" name="title" id="field_title"
                     ng-model="taskPriority.title"

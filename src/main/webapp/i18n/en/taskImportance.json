@@ -15,7 +15,6 @@
             "detail": {
                 "title": "TaskImportance"
             },
-            "code": "Code",
             "title": "Title",
             "description": "Description",
             "task": "Task"

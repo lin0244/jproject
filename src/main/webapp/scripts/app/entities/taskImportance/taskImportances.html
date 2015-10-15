@@ -41,7 +41,6 @@
             <thead>
                 <tr>
                     <th translate="global.field.id">ID</th>
-                    <th translate="jprojectApp.taskImportance.code">Code</th>
                     <th translate="jprojectApp.taskImportance.title">Title</th>
                     <th translate="jprojectApp.taskImportance.description">Description</th>
                     <th></th>
@@ -50,7 +49,6 @@
             <tbody>
                 <tr ng-repeat="taskImportance in taskImportances track by taskImportance.id">
                     <td><a ui-sref="taskImportance.detail({id:taskImportance.id})">{{taskImportance.id}}</a></td>
-                    <td>{{taskImportance.code}}</td>
                     <td>{{taskImportance.title}}</td>
                     <td>{{taskImportance.description}}</td>
                     <td>

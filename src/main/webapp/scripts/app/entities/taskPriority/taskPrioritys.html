@@ -41,7 +41,6 @@
             <thead>
                 <tr>
                     <th translate="global.field.id">ID</th>
-                    <th translate="jprojectApp.taskPriority.code">Code</th>
                     <th translate="jprojectApp.taskPriority.title">Title</th>
                     <th translate="jprojectApp.taskPriority.description">Description</th>
                     <th></th>
@@ -50,7 +49,6 @@
             <tbody>
                 <tr ng-repeat="taskPriority in taskPrioritys track by taskPriority.id">
                     <td><a ui-sref="taskPriority.detail({id:taskPriority.id})">{{taskPriority.id}}</a></td>
-                    <td>{{taskPriority.code}}</td>
                     <td>{{taskPriority.title}}</td>
                     <td>{{taskPriority.description}}</td>
                     <td>

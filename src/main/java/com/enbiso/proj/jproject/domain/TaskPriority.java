@@ -23,11 +23,6 @@ public class TaskPriority implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-
-    @NotNull
-    @Column(name = "code", nullable = false)
-    private Integer code;
-
     @NotNull
     @Column(name = "title", nullable = false)
     private String title;
@@ -46,14 +41,6 @@ public class TaskPriority implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public Integer getCode() {
-        return code;
-    }
-
-    public void setCode(Integer code) {
-        this.code = code;
     }
 
     public String getTitle() {

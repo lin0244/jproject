@@ -46,13 +46,11 @@ entity TaskStatus {
 }
 
 entity TaskPriority {
-    code Integer required,
     title String required,
     description String
 }
 
 entity TaskImportance {
-    code Integer required,
     title String required,
     description String
 }
