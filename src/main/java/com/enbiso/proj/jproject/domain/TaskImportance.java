@@ -92,7 +92,6 @@ public class TaskImportance implements Serializable {
     public String toString() {
         return "TaskImportance{" +
             "id=" + id +
-            ", code='" + code + "'" +
             ", title='" + title + "'" +
             ", description='" + description + "'" +
             '}';

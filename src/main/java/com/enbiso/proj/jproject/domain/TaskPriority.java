@@ -92,7 +92,6 @@ public class TaskPriority implements Serializable {
     public String toString() {
         return "TaskPriority{" +
             "id=" + id +
-            ", code='" + code + "'" +
             ", title='" + title + "'" +
             ", description='" + description + "'" +
             '}';
