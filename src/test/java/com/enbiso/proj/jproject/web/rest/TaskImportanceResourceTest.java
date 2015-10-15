@@ -41,9 +41,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @IntegrationTest
 public class TaskImportanceResourceTest {
 
-
-    private static final Integer DEFAULT_CODE = 1;
-    private static final Integer UPDATED_CODE = 2;
     private static final String DEFAULT_TITLE = "AAAAA";
     private static final String UPDATED_TITLE = "BBBBB";
     private static final String DEFAULT_DESCRIPTION = "AAAAA";
@@ -75,7 +72,6 @@ public class TaskImportanceResourceTest {
     @Before
     public void initTest() {
         taskImportance = new TaskImportance();
-        taskImportance.setCode(DEFAULT_CODE);
         taskImportance.setTitle(DEFAULT_TITLE);
         taskImportance.setDescription(DEFAULT_DESCRIPTION);
     }
@@ -96,7 +92,6 @@ public class TaskImportanceResourceTest {
         List<TaskImportance> taskImportances = taskImportanceRepository.findAll();
         assertThat(taskImportances).hasSize(databaseSizeBeforeCreate + 1);
         TaskImportance testTaskImportance = taskImportances.get(taskImportances.size() - 1);
-        assertThat(testTaskImportance.getCode()).isEqualTo(DEFAULT_CODE);
         assertThat(testTaskImportance.getTitle()).isEqualTo(DEFAULT_TITLE);
         assertThat(testTaskImportance.getDescription()).isEqualTo(DEFAULT_DESCRIPTION);
     }
@@ -106,7 +101,6 @@ public class TaskImportanceResourceTest {
     public void checkCodeIsRequired() throws Exception {
         int databaseSizeBeforeTest = taskImportanceRepository.findAll().size();
         // set the field null
-        taskImportance.setCode(null);
 
         // Create the TaskImportance, which fails.
 
@@ -148,7 +142,6 @@ public class TaskImportanceResourceTest {
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
                 .andExpect(jsonPath("$.[*].id").value(hasItem(taskImportance.getId().intValue())))
-                .andExpect(jsonPath("$.[*].code").value(hasItem(DEFAULT_CODE)))
                 .andExpect(jsonPath("$.[*].title").value(hasItem(DEFAULT_TITLE.toString())))
                 .andExpect(jsonPath("$.[*].description").value(hasItem(DEFAULT_DESCRIPTION.toString())));
     }
@@ -164,7 +157,6 @@ public class TaskImportanceResourceTest {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON))
             .andExpect(jsonPath("$.id").value(taskImportance.getId().intValue()))
-            .andExpect(jsonPath("$.code").value(DEFAULT_CODE))
             .andExpect(jsonPath("$.title").value(DEFAULT_TITLE.toString()))
             .andExpect(jsonPath("$.description").value(DEFAULT_DESCRIPTION.toString()));
     }
@@ -186,7 +178,6 @@ public class TaskImportanceResourceTest {
 		int databaseSizeBeforeUpdate = taskImportanceRepository.findAll().size();
 
         // Update the taskImportance
-        taskImportance.setCode(UPDATED_CODE);
         taskImportance.setTitle(UPDATED_TITLE);
         taskImportance.setDescription(UPDATED_DESCRIPTION);
 
@@ -199,7 +190,6 @@ public class TaskImportanceResourceTest {
         List<TaskImportance> taskImportances = taskImportanceRepository.findAll();
         assertThat(taskImportances).hasSize(databaseSizeBeforeUpdate);
         TaskImportance testTaskImportance = taskImportances.get(taskImportances.size() - 1);
-        assertThat(testTaskImportance.getCode()).isEqualTo(UPDATED_CODE);
         assertThat(testTaskImportance.getTitle()).isEqualTo(UPDATED_TITLE);
         assertThat(testTaskImportance.getDescription()).isEqualTo(UPDATED_DESCRIPTION);
     }
