@@ -24,8 +24,8 @@
                 "settings": "Settings",
                 "password": "Password",
                 "sessions": "Sessions",
-                "login": "Sign in",
-                "logout": "Sign out",
+                "login": "Login",
+                "logout": "Logout",
                 "register": "Register"
             },
             "admin": {

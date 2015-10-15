@@ -83,7 +83,15 @@
                     <select id="langKey" name="langKey" class="form-control" ng-model="settingsAccount.langKey" ng-controller="LanguageController" ng-options="code as (code | findLanguageFromKey) for code in languages"></select>
                 </div>
 
-                <button type="submit" ng-disabled="form.$invalid" class="btn btn-primary" translate="settings.form.button">Save</button>
+                <a ui-sref="password" class="btn btn-danger btn-sm">
+                    <i class="fa fa-lock fa-fw"></i>
+                    <span translate="settings.form.password">Password</span>
+                </a>
+
+                <button type="submit" ng-disabled="form.$invalid" class="btn btn-primary btn-sm">
+                    <i class="fa fa-check fa-fw"></i>
+                    <span translate="settings.form.button">Save</span>
+                </button>
             </form>
         </div>
     </div>
