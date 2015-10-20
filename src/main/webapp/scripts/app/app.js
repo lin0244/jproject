@@ -105,10 +105,10 @@ angular.module('jprojectApp', ['LocalStorageModule', 'tmh.dynamicLocale', 'pasca
         return {
             //restrict: 'A',
             link: function(scope, element, attrs){
-                if (attrs.toggle=="tooltip"){
+                if (attrs.toggle=="tooltip" || attrs.hover=="tooltip"){
                     $(element).tooltip();
                 }
-                if (attrs.toggle=="popover"){
+                if (attrs.toggle=="popover" || attrs.hover=="popover"){
                     $(element).popover();
                 }
             }

@@ -12,20 +12,18 @@
         <div class="collapse navbar-collapse" id="navbar-collapse" ng-switch="isAuthenticated()">
             <ul class="nav navbar-nav navbar-right">
                 <li ui-sref-active="active" ng-switch-when="true" class="dropdown pointer">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="">
-                        <span class="visible-xs">
-                            <i class="fa fa-cube fa-lg fa-fw"></i>
-                            <span class="hidden-sm" translate="global.menu.entities.main">
-                                Entities
-                            </span>
-                            <b class="caret"></b>
+                    <a class="dropdown-toggle hidden-xs" data-toggle="dropdown" href=""
+                       data-hover="tooltip"
+                       data-original-title="{{'global.menu.entities.main' | translate}}"
+                       data-placement="bottom">
+                        <i class="fa fa-cube fa-lg"></i>
+                    </a>
+                    <a class="dropdown-toggle visible-xs" data-toggle="dropdown" href="">
+                        <i class="fa fa-cube fa-lg fa-fw"></i>
+                        <span class="hidden-sm" translate="global.menu.entities.main">
+                            Entities
                         </span>
-                        <span class="hidden-xs"
-                              data-toggle="tooltip"
-                              data-original-title="{{'global.menu.entities.main' | translate}}"
-                              data-placement="right">
-                            <i class="fa fa-cube fa-lg"></i>
-                        </span>
+                        <b class="caret"></b>
                     </a>
                     <ul class="dropdown-menu">
                         <li ui-sref-active="active" ><a ui-sref="project" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-asterisk"></span>
@@ -54,20 +52,18 @@
                     </ul>
                 </li>
                 <li ng-class="{active: $state.includes('admin')}"  ng-switch-when="true" has-authority="ROLE_ADMIN" class="dropdown pointer">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="">
-                        <span class="visible-xs">
-                            <i class="fa fa-lock fa-lg fa-fw"></i>
-                            <span translate="global.menu.admin.main">
-                                Administration
-                            </span>
-                            <b class="caret"></b>
+                    <a class="dropdown-toggle hidden-xs" data-toggle="dropdown" href=""
+                       data-hover="tooltip"
+                       data-placement="bottom"
+                       data-original-title="{{'global.menu.admin.main' | translate}}">
+                        <i class="fa fa-user-secret fa-lg"></i>
+                    </a>
+                    <a class="dropdown-toggle visible-xs" data-toggle="dropdown" href="">
+                        <i class="fa fa-lock fa-lg fa-fw"></i>
+                        <span translate="global.menu.admin.main">
+                            Administration
                         </span>
-                        <span class="hidden-xs"
-                              data-toggle="tooltip"
-                              data-original-title="{{'global.menu.admin.main' | translate}}"
-                              data-placement="right">
-                            <i class="fa fa-user-secret fa-lg"></i>
-                        </span>
+                        <b class="caret"></b>
                     </a>
                     <ul class="dropdown-menu">
                         <li ui-sref-active="active"><a ui-sref="user-management" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-user"></span>
@@ -87,20 +83,18 @@
                     </ul>
                 </li>
                 <li ui-sref-active="active" class="dropdown pointer" ng-controller="LanguageController" ng-show="languages.length > 1">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="">
-                        <span class="visible-xs">
-                            <i class="fa fa-language fa-lg fa-fw"></i>
-                            <span class="visible-xs" translate="global.menu.language">
-                                Language
-                            </span>
-                            <b class="caret"></b>
+                    <a class="dropdown-toggle visible-xs" data-toggle="dropdown" href="">
+                        <i class="fa fa-language fa-lg fa-fw"></i>
+                        <span class="visible-xs" translate="global.menu.language">
+                            Language
                         </span>
-                        <span class="hidden-xs"
-                              data-toggle="tooltip"
-                              data-original-title="{{'global.menu.language' | translate}}"
-                              data-placement="right">
-                            <i class="fa fa-language fa-lg"></i>
-                        </span>
+                        <b class="caret"></b>
+                    </a>
+                    <a class="dropdown-toggle hidden-xs" data-toggle="dropdown" href=""
+                       data-hover="tooltip"
+                       data-placement="bottom"
+                       data-original-title="{{'global.menu.language' | translate}}">
+                        <i class="fa fa-language fa-lg"></i>
                     </a>
                     <ul class="dropdown-menu">
                         <li active-menu="{{language}}" ng-repeat="language in languages">
@@ -108,60 +102,64 @@
                         </li>
                     </ul>
                 </li>
-                <li ui-sref-active="active" ng-switch-when="true">
+                <!--Settings-->
+                <li ui-sref-active="active" ng-switch-when="true" class="hidden-xs"
+                    data-toggle="tooltip"
+                    data-original-title="{{'global.menu.account.settings' | translate}}"
+                    data-placement="bottom">
                     <a ui-sref="settings" data-toggle="collapse" data-target=".navbar-collapse.in">
-                        <span class="visible-xs">
-                            <i class="fa fa-cogs fa-fw fa-lg"></i>
-                            <span class="muted" translate="global.menu.account.settings">Settings</span>
-                        </span>
-                        <span class="hidden-xs"
-                              data-toggle="tooltip"
-                              data-original-title="{{'global.menu.account.settings' | translate}}"
-                              data-placement="right">
-                            <i class="fa fa-cogs fa-lg"></i>
-                        </span>
+                        <i class="fa fa-cogs fa-lg"></i>
                     </a>
                 </li>
-                <li ui-sref-active="active" ng-switch-when="true">
+                <li ui-sref-active="active" ng-switch-when="true" class="visible-xs">
+                    <a ui-sref="settings" data-toggle="collapse" data-target=".navbar-collapse.in">
+                        <i class="fa fa-cogs fa-fw fa-lg"></i>
+                        <span class="muted" translate="global.menu.account.settings">Settings</span>
+                    </a>
+                </li>
+                <!--Logout-->
+                <li ui-sref-active="active" ng-switch-when="true" class="hidden-xs"
+                    data-toggle="tooltip"
+                    data-original-title="{{'global.menu.account.logout' | translate}}"
+                    data-placement="bottom">
                     <a href="" ng-click="logout()" data-toggle="collapse" data-target=".navbar-collapse.in">
-                        <span class="visible-xs">
-                            <i class="fa fa-sign-out fa-lg fa-fw"></i>
-                            <span translate="global.menu.account.logout">Sign out</span>
-                        </span>
-                        <span class="hidden-xs"
-                              data-toggle="tooltip"
-                              data-original-title="{{'global.menu.account.logout' | translate}}"
-                              data-placement="right">
-                            <i class="fa fa-sign-out fa-lg"></i>
-                        </span>
+                        <i class="fa fa-sign-out fa-lg"></i>
                     </a>
                 </li>
-                <li ui-sref-active="active" ng-switch-when="false">
+                <li ui-sref-active="active" ng-switch-when="true" class="visible-xs">
+                    <a href="" ng-click="logout()" data-toggle="collapse" data-target=".navbar-collapse.in">
+                        <i class="fa fa-sign-out fa-lg fa-fw"></i>
+                        <span translate="global.menu.account.logout">Sign out</span>
+                    </a>
+                </li>
+                <!--Register-->
+                <li ui-sref-active="active" ng-switch-when="false" class="hidden-xs"
+                    data-toggle="tooltip"
+                    data-original-title="{{'global.menu.account.register' | translate}}"
+                    data-placement="bottom">
                     <a ui-sref="register" data-toggle="collapse" data-target=".navbar-collapse.in">
-                         <span class="visible-xs">
-                            <i class="fa fa-user-plus fa-lg fa-fw"></i>
-                            <span translate="global.menu.account.register">Register</span>
-                        </span>
-                        <span class="hidden-xs"
-                              data-toggle="tooltip"
-                              data-original-title="{{'global.menu.account.register' | translate}}"
-                              data-placement="right">
-                            <i class="fa fa-user-plus"></i>
-                        </span>
+                        <i class="fa fa-user-plus"></i>
                     </a>
                 </li>
-                <li ui-sref-active="active" ng-switch-when="false">
+                <li ui-sref-active="active" ng-switch-when="false" class="visible-xs">
+                    <a ui-sref="register" data-toggle="collapse" data-target=".navbar-collapse.in">
+                        <i class="fa fa-user-plus fa-lg fa-fw"></i>
+                        <span translate="global.menu.account.register">Register</span>
+                    </a>
+                </li>
+                <!--Login-->
+                <li ui-sref-active="active" ng-switch-when="false" class="hidden-xs"
+                    data-toggle="tooltip"
+                    data-original-title="{{'global.menu.account.login' | translate}}"
+                    data-placement="bottom">
                     <a ui-sref="login" data-toggle="collapse" data-target=".navbar-collapse.in">
-                        <span class="visible-xs">
-                            <i class="fa fa-sign-in fa-lg fa-fw"></i>
-                            <span translate="global.menu.account.login">Sign in</span>
-                        </span>
-                        <span class="hidden-xs"
-                              data-toggle="tooltip"
-                              data-original-title="{{'global.menu.account.login' | translate}}"
-                              data-placement="right">
-                            <i class="fa fa-sign-in fa-lg"></i>
-                        </span>
+                        <i class="fa fa-sign-in fa-lg"></i>
+                    </a>
+                </li>
+                <li ui-sref-active="active" ng-switch-when="false" class="visible-xs">
+                    <a ui-sref="login" data-toggle="collapse" data-target=".navbar-collapse.in">
+                        <i class="fa fa-sign-in fa-lg fa-fw"></i>
+                        <span translate="global.menu.account.login">Sign in</span>
                     </a>
                 </li>
             </ul>

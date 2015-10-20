@@ -26,13 +26,13 @@
         <div ng-show="{{ENV === 'dev'}}" class="development" ng-cloak=""></div>
         <div ui-view="navbar" ng-cloak=""></div>
         <div class="container">
-            <div class="well" ui-view="content"></div>
-
+            <div ui-view="content" class="content-container"></div>
+            <jh-alert></jh-alert>
+            <hr/>
             <div class="footer">
                 <div class="text-center text-muted"><strong>{{"global.title" | translate}}</strong>&nbsp;<small>v{{VERSION}}&nbsp;<i class="fa fa-copyright"></i>&nbsp;2015</small></div>
             </div>
         </div>
-
         <!-- Google Analytics: uncomment and change UA-XXXXX-X to be your site's ID.
         <script>
             (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
