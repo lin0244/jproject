@@ -1,9 +1,12 @@
 package com.enbiso.proj.jproject.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
+import com.enbiso.proj.jproject.domain.Iteration;
 import com.enbiso.proj.jproject.domain.Project;
 import com.enbiso.proj.jproject.repository.ProjectRepository;
 import com.enbiso.proj.jproject.web.rest.util.HeaderUtil;
+import com.google.common.collect.Lists;
+import org.hibernate.Hibernate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpHeaders;

@@ -1,38 +1,76 @@
+<div class="modal fade" id="deleteProjectConfirmation">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form name="deleteForm" ng-submit="confirmDelete(project.id)">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                            ng-click="clear()">&times;</button>
+                    <h4 class="modal-title" translate="entity.delete.title">Confirm delete operation</h4>
+                </div>
+                <div class="modal-body">
+                    <p translate="jprojectApp.project.delete.question" translate-values="{id: '{{project.code}}'}">Are you sure you want to delete this Project?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
+                        <span translate="entity.action.cancel">Cancel</span>
+                    </button>
+                    <button type="submit" ng-disabled="deleteForm.$invalid" class="btn btn-danger">
+                        <span translate="entity.action.delete">Delete</span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 
-<div>
-    <h2><span translate="jprojectApp.project.detail.title">Project</span> {{project.id}}</h2>
-    <div class="table-responsive">
-        <table class="table table-striped">
+<div class="page-header">
+        <div class="pull-right">
+            <br/>
+            <div class="btn-group btn-group-xs">
+                <button type="submit" ui-sref="project.edit({id:project.id})"
+                        class="btn btn-default btn-xs">
+                    <i class="fa fa-pencil fa-fw"></i>&nbsp;<span translate="entity.action.edit"></span>
+                </button>
+                <button type="submit" ng-click="delete(project.id)"
+                        class="btn btn-default btn-xs">
+                    <i class="fa fa-ban fa-fw"></i>&nbsp;<span translate="entity.action.delete"></span>
+                </button>
+            </div>
+        </div>
+        <h2 class="page-title">
+            <i class="fa fa-rocket fa-lg"></i>&nbsp;{{project.code}}&nbsp;<small>{{project.name}}</small>
+        </h2>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="text-right">
+        <button type="submit" ui-sref="iteration.new({projectId:project.id})"
+                class="btn btn-default btn-sm">
+            <i class="fa fa-plus-circle fa-fw"></i>&nbsp;<span translate="jprojectApp.iteration.home.createLabel"></span>
+        </button>
+    </div>
+    <div class="panel-body">
+        <table class="table table-hover">
             <thead>
             <tr>
-                <th translate="entity.detail.field">Field</th>
-                <th translate="entity.detail.value">Value</th>
+                <th translate="jprojectApp.iteration.title">Title</th>
+                <th translate="jprojectApp.iteration.startDate">StartDate</th>
+                <th translate="jprojectApp.iteration.endDate">EndDate</th>
+                <th></th>
             </tr>
             </thead>
             <tbody>
-            <tr>
+            <tr ng-repeat="iteration in iterations track by iteration.id">
+                <td>{{iteration.title}}</td>
+                <td>{{iteration.startDate | date:'MMM dd, yyyy'}}</td>
+                <td>{{iteration.endDate | date:'MMM dd, yyyy'}}</td>
                 <td>
-                    <span translate="jprojectApp.project.code">Code</span>
-                </td>
-                <td>
-                    <span class="form-control-static">{{project.code}}</span>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <span translate="jprojectApp.project.name">Name</span>
-                </td>
-                <td>
-                    <span class="form-control-static">{{project.name}}</span>
+                    <a ui-sref="iteration.detail({projectId:iteration.project.id,id:iteration.id})"
+                        class="btn btn-xs btn-primary"><i class="fa fa-arrow-right fa-fw"></i></a>
                 </td>
             </tr>
             </tbody>
         </table>
     </div>
-
-    <button type="submit"
-            onclick="window.history.back()"
-            class="btn btn-info">
-        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span translate="entity.action.back"> Back</span>
-    </button>
 </div>

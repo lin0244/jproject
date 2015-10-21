@@ -1,11 +1,10 @@
 'use strict';
 
 angular.module('jprojectApp').controller('ProjectDialogController',
-    ['$scope', '$stateParams', '$modalInstance', 'entity', 'Project', 'Iteration',
-        function($scope, $stateParams, $modalInstance, entity, Project, Iteration) {
+    ['$scope', '$stateParams', '$modalInstance', 'entity', 'Project',
+        function($scope, $stateParams, $modalInstance, entity, Project) {
 
         $scope.project = entity;
-        $scope.iterations = Iteration.query();
         $scope.load = function(id) {
             Project.get({id : id}, function(result) {
                 $scope.project = result;

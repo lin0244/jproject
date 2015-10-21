@@ -40,10 +40,14 @@ angular.module('jprojectApp')
                 resolve: {
                     translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
                         $translatePartialLoader.addPart('project');
+                        $translatePartialLoader.addPart('iteration');
                         return $translate.refresh();
                     }],
                     entity: ['$stateParams', 'Project', function($stateParams, Project) {
                         return Project.get({id : $stateParams.id});
+                    }],
+                    iterations: ['$stateParams', 'Iteration', function($stateParams, Iteration) {
+                        return Iteration.query({projectId : $stateParams.id});
                     }]
                 }
             })
@@ -75,7 +79,7 @@ angular.module('jprojectApp')
                 }]
             })
             .state('project.edit', {
-                parent: 'project',
+                parent: 'project.detail',
                 url: '/{id}/edit',
                 data: {
                     authorities: ['ROLE_USER'],
@@ -91,7 +95,7 @@ angular.module('jprojectApp')
                             }]
                         }
                     }).result.then(function(result) {
-                        $state.go('project', null, { reload: true });
+                        $state.go('project.detail', {id : $stateParams.id}, { reload: true });
                     }, function() {
                         $state.go('^');
                     })

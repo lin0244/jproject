@@ -1,54 +1,19 @@
-
-<div>
-    <h2><span translate="jprojectApp.iteration.detail.title">Iteration</span> {{iteration.id}}</h2>
-    <div class="table-responsive">
-        <table class="table table-striped">
-            <thead>
-            <tr>
-                <th translate="entity.detail.field">Field</th>
-                <th translate="entity.detail.value">Value</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td>
-                    <span translate="jprojectApp.iteration.title">Title</span>
-                </td>
-                <td>
-                    <span class="form-control-static">{{iteration.title}}</span>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <span translate="jprojectApp.iteration.startDate">StartDate</span>
-                </td>
-                <td>
-                    <span class="form-control-static">{{iteration.startDate}}</span>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <span translate="jprojectApp.iteration.endDate">EndDate</span>
-                </td>
-                <td>
-                    <span class="form-control-static">{{iteration.endDate}}</span>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <span translate="jprojectApp.iteration.project">project</span>
-                </td>
-                <td>
-                    <a class="form-control-static" ui-sref="project.detail({id:iteration.project.id})">{{iteration.project.code}}</a>
-                </td>
-            </tr>
-            </tbody>
-        </table>
+<div class="page-header">
+    <div class="pull-right">
+        <br/>
+        <div class="btn-group btn-group-xs">
+            <button type="submit" ui-sref="iteration.edit({projectId:iteration.project.id, id:iteration.id})"
+                    class="btn btn-default btn-xs">
+                <i class="fa fa-pencil fa-fw"></i>&nbsp;<span translate="entity.action.edit"></span>
+            </button>
+            <button type="submit" ng-click="delete(project.id)"
+                    class="btn btn-default btn-xs">
+                <i class="fa fa-ban fa-fw"></i>&nbsp;<span translate="entity.action.delete"></span>
+            </button>
+        </div>
     </div>
-
-    <button type="submit"
-            onclick="window.history.back()"
-            class="btn btn-info">
-        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span translate="entity.action.back"> Back</span>
-    </button>
+    <h2 class="page-title">
+        <a ui-sref="project.detail({id:iteration.project.id})"><i class="fa fa-rocket fa-lg"></i></a>&nbsp;{{iteration.project.code}}&nbsp;<small>{{iteration.title}}</small>
+    </h2>
 </div>
+

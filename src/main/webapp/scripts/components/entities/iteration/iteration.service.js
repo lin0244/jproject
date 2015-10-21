@@ -2,7 +2,7 @@
 
 angular.module('jprojectApp')
     .factory('Iteration', function ($resource, DateUtils) {
-        return $resource('api/iterations/:id', {}, {
+        return $resource('api/projects/:projectId/iterations/:id', {}, {
             'query': { method: 'GET', isArray: true},
             'get': {
                 method: 'GET',

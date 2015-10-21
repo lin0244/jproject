@@ -8,8 +8,8 @@ angular.module('jprojectApp').controller('IterationDialogController',
         $scope.projects = Project.query();
         $scope.teams = Team.query();
         $scope.tasks = Task.query();
-        $scope.load = function(id) {
-            Iteration.get({id : id}, function(result) {
+        $scope.load = function(projectId, id) {
+            Iteration.get({projectId: projectId, id : id}, function(result) {
                 $scope.iteration = result;
             });
         };
