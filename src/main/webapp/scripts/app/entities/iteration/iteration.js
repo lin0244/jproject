@@ -21,6 +21,7 @@ angular.module('jprojectApp')
                     translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
                         $translatePartialLoader.addPart('iteration');
                         $translatePartialLoader.addPart('global');
+                        $translatePartialLoader.addPart('task');
                         return $translate.refresh();
                     }],
                     entity: ['$stateParams', 'Iteration', function($stateParams, Iteration) {

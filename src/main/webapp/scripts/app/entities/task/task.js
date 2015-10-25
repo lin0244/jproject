@@ -48,7 +48,7 @@ angular.module('jprojectApp')
                 }
             })
             .state('task.new', {
-                parent: 'task',
+                parent: 'iteration.detail',
                 url: '/new',
                 data: {
                     authorities: ['ROLE_USER'],
@@ -67,14 +67,14 @@ angular.module('jprojectApp')
                             }
                         }
                     }).result.then(function(result) {
-                        $state.go('task', null, { reload: true });
+                        $state.go('^', null, { reload: true });
                     }, function() {
-                        $state.go('task');
+                        $state.go('^');
                     })
                 }]
             })
             .state('task.edit', {
-                parent: 'task',
+                parent: 'iteration.detail',
                 url: '/{id}/edit',
                 data: {
                     authorities: ['ROLE_USER'],
@@ -90,7 +90,7 @@ angular.module('jprojectApp')
                             }]
                         }
                     }).result.then(function(result) {
-                        $state.go('task', null, { reload: true });
+                        $state.go('^', null, { reload: true });
                     }, function() {
                         $state.go('^');
                     })
