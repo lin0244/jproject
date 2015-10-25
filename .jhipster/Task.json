@@ -101,5 +101,5 @@
   ],
   "changelogDate": "20151014174836",
   "dto": "no",
-  "pagination": "no"
+  "pagination": "pager"
 }

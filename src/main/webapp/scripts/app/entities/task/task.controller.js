@@ -1,12 +1,18 @@
 'use strict';
 
 angular.module('jprojectApp')
-    .controller('TaskController', function ($scope, Task) {
+    .controller('TaskController', function ($scope, Task, ParseLinks) {
         $scope.tasks = [];
+        $scope.page = 0;
         $scope.loadAll = function() {
-            Task.query(function(result) {
-               $scope.tasks = result;
+            Task.query({page: $scope.page, size: 20}, function(result, headers) {
+                $scope.links = ParseLinks.parse(headers('link'));
+                $scope.tasks = result;
             });
+        };
+        $scope.loadPage = function(page) {
+            $scope.page = page;
+            $scope.loadAll();
         };
         $scope.loadAll();
 

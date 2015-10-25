@@ -4,8 +4,11 @@ import com.codahale.metrics.annotation.Timed;
 import com.enbiso.proj.jproject.domain.Task;
 import com.enbiso.proj.jproject.repository.TaskRepository;
 import com.enbiso.proj.jproject.web.rest.util.HeaderUtil;
+import com.enbiso.proj.jproject.web.rest.util.PaginationUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -74,9 +77,11 @@ public class TaskResource {
         method = RequestMethod.GET,
         produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
-    public List<Task> getAllTasks() {
-        log.debug("REST request to get all Tasks");
-        return taskRepository.findAll();
+    public ResponseEntity<List<Task>> getAllTasks(Pageable pageable)
+        throws URISyntaxException {
+        Page<Task> page = taskRepository.findAll(pageable);
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/tasks");
+        return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }
 
     /**
