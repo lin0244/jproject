@@ -42,3 +42,20 @@
     </h2>
 </div>
 
+<div class="panel panel-default">
+    <div class="panel-body">
+        <ul class="nav nav-tabs" role="tablist">
+            <li role="presentation" ui-sref-active-eq="active">
+                <a ui-sref="iteration.detail" aria-controls="home" role="tab">{{'jprojectApp.iteration.tab.home' | translate}}</a>
+            </li>
+            <li role="presentation" ui-sref-active="active">
+                <a ui-sref="iteration.tasks" aria-controls="tasks" role="tab">{{'jprojectApp.iteration.tab.task' | translate}}</a>
+            </li>
+            <li role="presentation" ui-sref-active="active">
+                <a ui-sref="iteration.teams" aria-controls="teams" role="tab">{{'jprojectApp.iteration.tab.team' | translate}}</a>
+            </li>
+        </ul>
+        <div class="tab-content" ui-view="tab-content"></div>
+    </div>
+</div>
+

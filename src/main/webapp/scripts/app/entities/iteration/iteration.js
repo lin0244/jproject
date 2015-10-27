@@ -15,13 +15,16 @@ angular.module('jprojectApp')
                     'content@': {
                         templateUrl: 'scripts/app/entities/iteration/iteration-detail.html',
                         controller: 'IterationDetailController'
+                    },
+                    'tab-content@iteration.detail': {
+                        templateUrl: 'scripts/app/entities/iteration/iteration-dashboard.html',
+                        controller: 'IterationDashboardController'
                     }
                 },
                 resolve: {
                     translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
                         $translatePartialLoader.addPart('iteration');
                         $translatePartialLoader.addPart('global');
-                        $translatePartialLoader.addPart('task');
                         return $translate.refresh();
                     }],
                     entity: ['$stateParams', 'Iteration', function($stateParams, Iteration) {
@@ -81,5 +84,51 @@ angular.module('jprojectApp')
                         $state.go('^');
                     })
                 }]
+            })
+            .state('iteration.tasks', {
+                parent: 'iteration.detail',
+                url: '/tasks',
+                data: {
+                    authorities: ['ROLE_USER'],
+                },
+                views: {
+                    'tab-content@iteration.detail': {
+                        templateUrl: 'scripts/app/entities/iteration/iteration-tasks.html',
+                        controller: 'IterationTaskController'
+                    }
+                },
+                resolve: {
+                    translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
+                        $translatePartialLoader.addPart('global');
+                        $translatePartialLoader.addPart('task');
+                        return $translate.refresh();
+                    }],
+                    entity: ['$stateParams', 'Iteration', function($stateParams, Iteration) {
+                        return Iteration.get($stateParams);
+                    }]
+                }
+            })
+            .state('iteration.teams', {
+                parent: 'iteration.detail',
+                url: '/teams',
+                data: {
+                    authorities: ['ROLE_USER'],
+                },
+                views: {
+                    'tab-content@iteration.detail': {
+                        templateUrl: 'scripts/app/entities/iteration/iteration-teams.html',
+                        controller: 'IterationTeamController'
+                    }
+                },
+                resolve: {
+                    translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
+                        $translatePartialLoader.addPart('global');
+                        $translatePartialLoader.addPart('team');
+                        return $translate.refresh();
+                    }],
+                    entity: ['$stateParams', 'Iteration', function($stateParams, Iteration) {
+                        return Iteration.get($stateParams);
+                    }]
+                }
             });
     });
