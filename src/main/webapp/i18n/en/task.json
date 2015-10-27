@@ -23,8 +23,8 @@
             "status": "Status",
             "priority": "Priority",
             "importance": "Importance",
-            "subTask": "SubTask",
-            "parentTask": "ParentTask",
+            "subTask": "Sub Task",
+            "parentTask": "Parent Task",
             "comment": "Comment",
             "log": "Log"
         }

@@ -1,3 +1,28 @@
+<div class="modal fade" id="deleteIterationConfirmation">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form name="deleteForm" ng-submit="confirmDelete()">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                            ng-click="clear()">&times;</button>
+                    <h4 class="modal-title" translate="entity.delete.title">Confirm delete operation</h4>
+                </div>
+                <div class="modal-body">
+                    <p translate="jprojectApp.iteration.delete.question" translate-values="{id: '{{iteration.id}}'}">Are you sure you want to delete this Iteration?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
+                        <span translate="entity.action.cancel">Cancel</span>
+                    </button>
+                    <button type="submit" ng-disabled="deleteForm.$invalid" class="btn btn-danger">
+                        <span translate="entity.action.delete">Delete</span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
 <div class="page-header">
     <div class="pull-right">
         <br/>
@@ -6,7 +31,7 @@
                     class="btn btn-default btn-xs">
                 <i class="fa fa-pencil fa-fw"></i>&nbsp;<span translate="entity.action.edit"></span>
             </button>
-            <button type="submit" ng-click="delete(project.id)"
+            <button type="submit" ng-click="delete()"
                     class="btn btn-default btn-xs">
                 <i class="fa fa-ban fa-fw"></i>&nbsp;<span translate="entity.action.delete"></span>
             </button>

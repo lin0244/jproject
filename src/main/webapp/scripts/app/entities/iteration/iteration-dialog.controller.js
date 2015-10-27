@@ -1,13 +1,9 @@
 'use strict';
 
 angular.module('jprojectApp').controller('IterationDialogController',
-    ['$scope', '$stateParams', '$modalInstance', 'entity', 'Iteration', 'Project', 'Team', 'Task',
-        function($scope, $stateParams, $modalInstance, entity, Iteration, Project, Team, Task) {
-
+    ['$scope', '$stateParams', '$modalInstance', 'entity', 'Iteration', 'Project',
+        function($scope, $stateParams, $modalInstance, entity, Iteration, Project) {
         $scope.iteration = entity;
-        $scope.projects = Project.query();
-        $scope.teams = Team.query();
-        $scope.tasks = Task.query();
         $scope.load = function(projectId, id) {
             Iteration.get({projectId: projectId, id : id}, function(result) {
                 $scope.iteration = result;
@@ -21,9 +17,11 @@ angular.module('jprojectApp').controller('IterationDialogController',
 
         $scope.save = function () {
             if ($scope.iteration.id != null) {
-                Iteration.update($scope.iteration, onSaveFinished);
+                var uParams = {projectId: $stateParams.projectId};
+                Iteration.update(uParams, $scope.iteration, onSaveFinished);
             } else {
-                Iteration.save($scope.iteration, onSaveFinished);
+                var uParams = {projectId: $stateParams.id};
+                Iteration.save(uParams, $scope.iteration, onSaveFinished);
             }
         };
 

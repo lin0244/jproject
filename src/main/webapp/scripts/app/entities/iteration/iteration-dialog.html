@@ -8,10 +8,17 @@
     </div>
     <div class="modal-body">
         <jh-alert-error></jh-alert-error>
-        <div class="form-group">
-            <label for="id" translate="global.field.id">ID</label>
-            <input type="text" class="form-control" id="id" name="id"
-                    ng-model="iteration.id" readonly>
+        <div class="row">
+            <div class="form-group col-sm-6">
+                <label for="id" translate="global.field.id">ID</label>
+                <input type="text" class="form-control" id="id" name="id"
+                       ng-model="iteration.id" readonly>
+            </div>
+            <div class="form-group col-sm-6">
+                <label translate="jprojectApp.iteration.project" for="field_project">project</label>
+                <input type="text" class="form-control" name="project" id="field_project"
+                       ng-model="iteration.project.code" readonly>
+            </div>
         </div>
         <div class="form-group">
             <label translate="jprojectApp.iteration.title" for="field_title">Title</label>
@@ -25,44 +32,39 @@
                 </p>
             </div>
         </div>
-        <div class="form-group">
-            <label translate="jprojectApp.iteration.startDate" for="field_startDate">StartDate</label>
-            <input type="datetime-local" class="form-control" name="startDate" id="field_startDate"
-                    ng-model="iteration.startDate" ng-model-options="{timezone: 'UTC'}"
-                    required>
-            <div ng-show="editForm.startDate.$invalid">
-                <p class="help-block"
-                    ng-show="editForm.startDate.$error.required" translate="entity.validation.required">
-                    This field is required.
-                </p>
-                <p class="help-block"
-                    ng-show="editForm.startDate.$error.datetimelocal" translate="entity.validation.datetimelocal">
-                    This field should be a date and time.
-                </p>
+        <div class="row">
+            <div class="form-group col-sm-6">
+                <label translate="jprojectApp.iteration.startDate" for="field_startDate">StartDate</label>
+                <input type="datetime-local" class="form-control" name="startDate" id="field_startDate"
+                        ng-model="iteration.startDate" ng-model-options="{timezone: 'UTC'}"
+                        required>
+                <div ng-show="editForm.startDate.$invalid">
+                    <p class="help-block"
+                        ng-show="editForm.startDate.$error.required" translate="entity.validation.required">
+                        This field is required.
+                    </p>
+                    <p class="help-block"
+                        ng-show="editForm.startDate.$error.datetimelocal" translate="entity.validation.datetimelocal">
+                        This field should be a date and time.
+                    </p>
+                </div>
             </div>
-        </div>
-        <div class="form-group">
-            <label translate="jprojectApp.iteration.endDate" for="field_endDate">EndDate</label>
-            <input type="datetime-local" class="form-control" name="endDate" id="field_endDate"
-                    ng-model="iteration.endDate" ng-model-options="{timezone: 'UTC'}"
-                    required>
-            <div ng-show="editForm.endDate.$invalid">
-                <p class="help-block"
-                    ng-show="editForm.endDate.$error.required" translate="entity.validation.required">
-                    This field is required.
-                </p>
-                <p class="help-block"
-                    ng-show="editForm.endDate.$error.datetimelocal" translate="entity.validation.datetimelocal">
-                    This field should be a date and time.
-                </p>
+            <div class="form-group col-sm-6">
+                <label translate="jprojectApp.iteration.endDate" for="field_endDate">EndDate</label>
+                <input type="datetime-local" class="form-control" name="endDate" id="field_endDate"
+                        ng-model="iteration.endDate" ng-model-options="{timezone: 'UTC'}"
+                        required>
+                <div ng-show="editForm.endDate.$invalid">
+                    <p class="help-block"
+                        ng-show="editForm.endDate.$error.required" translate="entity.validation.required">
+                        This field is required.
+                    </p>
+                    <p class="help-block"
+                        ng-show="editForm.endDate.$error.datetimelocal" translate="entity.validation.datetimelocal">
+                        This field should be a date and time.
+                    </p>
+                </div>
             </div>
-        </div>
-
-        <div class="form-group">
-            <label translate="jprojectApp.iteration.project" for="field_project">project</label>
-            <select class="form-control" id="field_project" name="project" ng-model="iteration.project" ng-options="project as project.code for project in projects track by project.id">
-                <option value=""></option>
-            </select>
         </div>
     </div>
     <div class="modal-footer">

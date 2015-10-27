@@ -10,22 +10,6 @@ angular.module('jprojectApp')
         };
         $scope.loadAll();
 
-        $scope.delete = function (id) {
-            Project.get({id: id}, function(result) {
-                $scope.project = result;
-                $('#deleteProjectConfirmation').modal('show');
-            });
-        };
-
-        $scope.confirmDelete = function (id) {
-            Project.delete({id: id},
-                function () {
-                    $scope.loadAll();
-                    $('#deleteProjectConfirmation').modal('hide');
-                    $scope.clear();
-                });
-        };
-
         $scope.refresh = function () {
             $scope.loadAll();
             $scope.clear();

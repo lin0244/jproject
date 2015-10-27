@@ -16,8 +16,8 @@
                 "title": "Iteration"
             },
             "title": "Iteration",
-            "startDate": "StartDate",
-            "endDate": "EndDate",
+            "startDate": "Start Date",
+            "endDate": "End Date",
             "project": "Project",
             "team": "Team",
             "task": "Task"

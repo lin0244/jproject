@@ -31,27 +31,29 @@ angular.module('jprojectApp')
             })
             .state('iteration.new', {
                 parent: 'project.detail',
-                url: '/new',
+                url: '/iterations/new',
                 data: {
                     authorities: ['ROLE_USER'],
                 },
-                onEnter: ['$stateParams', '$state', '$modal', function($stateParams, $state, $modal) {
+                onEnter: ['$stateParams', '$state', '$modal', 'Project', function($stateParams, $state, $modal, Project) {
                     $modal.open({
                         templateUrl: 'scripts/app/entities/iteration/iteration-dialog.html',
                         controller: 'IterationDialogController',
                         size: 'lg',
                         resolve: {
                             entity: function () {
+                                var now = moment().utc().startOf('day').toDate();
                                 return {
                                     title: null,
-                                    startDate: null,
-                                    endDate: null,
-                                    id: null
+                                    startDate: now,
+                                    endDate: moment(now).add(1, 'months').toDate(),
+                                    id: null,
+                                    project: Project.get({id:$stateParams.id})
                                 };
                             }
                         }
                     }).result.then(function(result) {
-                        $state.go('project.detail', {id:$stateParams.projectId}, { reload: true });
+                        $state.go('project.detail', {id : $stateParams.id}, { reload: true });
                     }, function() {
                         $state.go('^');
                     })
@@ -59,7 +61,7 @@ angular.module('jprojectApp')
             })
             .state('iteration.edit', {
                 parent: 'iteration.detail',
-                url: '/{id}/edit',
+                url: '/edit',
                 data: {
                     authorities: ['ROLE_USER'],
                 },
@@ -70,7 +72,7 @@ angular.module('jprojectApp')
                         size: 'lg',
                         resolve: {
                             entity: ['Iteration', function(Iteration) {
-                                return Iteration.get({id : $stateParams.id});
+                                return Iteration.get({projectId: $stateParams.projectId, id : $stateParams.id});
                             }]
                         }
                     }).result.then(function(result) {
