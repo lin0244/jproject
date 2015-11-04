@@ -31,7 +31,9 @@
             <column name="end_date" type="timestamp">
                 <constraints nullable="false" />
             </column>
-            <column name="project_id" type="bigint"/>
+            <column name="project_id" type="bigint">
+                <constraints nullable="false" />
+            </column>
         </createTable>
         <dropDefaultValue tableName="app_iteration_tab" columnName="start_date" columnDataType="datetime"/>
 
