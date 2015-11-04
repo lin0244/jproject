@@ -106,7 +106,6 @@ public class ProjectResourceTest {
         restProjectMockMvc.perform(get("/api/projects"))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
-                .andExpect(jsonPath("$.[*].id").value(hasItem(project.getId().intValue())))
                 .andExpect(jsonPath("$.[*].code").value(hasItem(DEFAULT_CODE.toString())))
                 .andExpect(jsonPath("$.[*].name").value(hasItem(DEFAULT_NAME.toString())));
     }
@@ -118,10 +117,9 @@ public class ProjectResourceTest {
         projectRepository.saveAndFlush(project);
 
         // Get the project
-        restProjectMockMvc.perform(get("/api/projects/{id}", project.getId()))
+        restProjectMockMvc.perform(get("/api/projects/{code}", project.getCode()))
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON))
-            .andExpect(jsonPath("$.id").value(project.getId().intValue()))
             .andExpect(jsonPath("$.code").value(DEFAULT_CODE.toString()))
             .andExpect(jsonPath("$.name").value(DEFAULT_NAME.toString()));
     }
@@ -168,7 +166,7 @@ public class ProjectResourceTest {
 		int databaseSizeBeforeDelete = projectRepository.findAll().size();
 
         // Get the project
-        restProjectMockMvc.perform(delete("/api/projects/{id}", project.getId())
+        restProjectMockMvc.perform(delete("/api/projects/{code}", project.getCode())
                 .accept(TestUtil.APPLICATION_JSON_UTF8))
                 .andExpect(status().isOk());
 

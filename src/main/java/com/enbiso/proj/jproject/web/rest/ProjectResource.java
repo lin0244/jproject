@@ -48,7 +48,7 @@ public class ProjectResource {
         }
         Project result = projectRepository.save(project);
         return ResponseEntity.created(new URI("/api/projects/" + result.getId()))
-            .headers(HeaderUtil.createEntityCreationAlert("project", result.getId().toString()))
+            .headers(HeaderUtil.createEntityCreationAlert("project", result.getId()))
             .body(result);
     }
 
@@ -66,7 +66,7 @@ public class ProjectResource {
         }
         Project result = projectRepository.save(project);
         return ResponseEntity.ok()
-            .headers(HeaderUtil.createEntityUpdateAlert("project", project.getId().toString()))
+            .headers(HeaderUtil.createEntityUpdateAlert("project", project.getId()))
             .body(result);
     }
 
@@ -89,7 +89,7 @@ public class ProjectResource {
         method = RequestMethod.GET,
         produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
-    public ResponseEntity<Project> getProject(@PathVariable Long id) {
+    public ResponseEntity<Project> getProject(@PathVariable String id) {
         log.debug("REST request to get Project : {}", id);
         return Optional.ofNullable(projectRepository.findOne(id))
             .map(project -> new ResponseEntity<>(
@@ -105,9 +105,9 @@ public class ProjectResource {
         method = RequestMethod.DELETE,
         produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
-    public ResponseEntity<Void> deleteProject(@PathVariable Long id) {
+    public ResponseEntity<Void> deleteProject(@PathVariable String id) {
         log.debug("REST request to delete Project : {}", id);
         projectRepository.delete(id);
-        return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert("project", id.toString())).build();
+        return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert("project", id)).build();
     }
 }

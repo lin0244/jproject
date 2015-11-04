@@ -26,7 +26,7 @@ angular.module('jprojectApp')
             })
             .state('project.detail', {
                 parent: 'entity',
-                url: '/project/{id}',
+                url: '/project/{code}',
                 data: {
                     authorities: ['ROLE_USER'],
                     pageTitle: 'jprojectApp.project.detail.title'
@@ -44,10 +44,10 @@ angular.module('jprojectApp')
                         return $translate.refresh();
                     }],
                     entity: ['$stateParams', 'Project', function($stateParams, Project) {
-                        return Project.get({id : $stateParams.id});
+                        return Project.get({code : $stateParams.code});
                     }],
                     iterations: ['$stateParams', 'Iteration', function($stateParams, Iteration) {
-                        return Iteration.query({projectId : $stateParams.id});
+                        return Iteration.query({projectCode : $stateParams.code});
                     }]
                 }
             })

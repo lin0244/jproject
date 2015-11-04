@@ -25,10 +25,42 @@ import java.util.Objects;
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 public class Iteration implements Serializable {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    @Embeddable
+    public static class Id implements Serializable {
 
+        @NotNull
+        @Size(min = 2, max = 10)
+        @Column(name = "id", length = 10)
+        private String id;
+
+        @NotNull
+        @ManyToOne
+        private Project project;
+
+        public Id(String id, Project project) {
+            this.id = id;
+            this.project = project;
+        }
+
+        public String getId() {
+            return id;
+        }
+
+        public void setId(String id) {
+            this.id = id;
+        }
+
+        public Project getProject() {
+            return project;
+        }
+
+        public void setProject(Project project) {
+            this.project = project;
+        }
+    }
+
+    @EmbeddedId
+    private Id id;
 
     @NotNull
     @Column(name = "title", nullable = false)
@@ -48,9 +80,6 @@ public class Iteration implements Serializable {
     @Column(name = "end_date", nullable = false)
     private DateTime endDate;
 
-    @ManyToOne
-    private Project project;
-
     @OneToMany(mappedBy = "iteration")
     @JsonIgnore
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
@@ -61,11 +90,11 @@ public class Iteration implements Serializable {
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     private Set<Task> tasks = new HashSet<>();
 
-    public Long getId() {
+    public Id getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Id id) {
         this.id = id;
     }
 
@@ -91,14 +120,6 @@ public class Iteration implements Serializable {
 
     public void setEndDate(DateTime endDate) {
         this.endDate = endDate;
-    }
-
-    public Project getProject() {
-        return project;
-    }
-
-    public void setProject(Project project) {
-        this.project = project;
     }
 
     public Set<Team> getTeams() {

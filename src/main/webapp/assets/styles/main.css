@@ -175,3 +175,7 @@ ul#strengthBar {
     border-top: 1px solid #e8e8e8;
     padding-top: 10px;
 }
+
+.pointer:hover{
+    cursor: pointer;
+}

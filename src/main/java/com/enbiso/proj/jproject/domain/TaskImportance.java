@@ -20,8 +20,7 @@ import java.util.Objects;
 public class TaskImportance implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private Integer id;
 
     @NotNull
     @Column(name = "title", nullable = false)
@@ -35,11 +34,11 @@ public class TaskImportance implements Serializable {
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     private Set<Task> tasks = new HashSet<>();
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

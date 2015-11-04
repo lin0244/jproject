@@ -19,7 +19,7 @@
     -->
     <changeSet id="20151014174836" author="jhipster">
         <createTable tableName="app_task_priority_tab">
-            <column name="id" type="bigint" autoIncrement="${autoIncrement}" >
+            <column name="id" type="int">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
             <column name="title" type="varchar(255)">

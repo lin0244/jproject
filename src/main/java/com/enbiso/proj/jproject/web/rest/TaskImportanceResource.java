@@ -86,7 +86,7 @@ public class TaskImportanceResource {
         method = RequestMethod.GET,
         produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
-    public ResponseEntity<TaskImportance> getTaskImportance(@PathVariable Long id) {
+    public ResponseEntity<TaskImportance> getTaskImportance(@PathVariable Integer id) {
         log.debug("REST request to get TaskImportance : {}", id);
         return Optional.ofNullable(taskImportanceRepository.findOne(id))
             .map(taskImportance -> new ResponseEntity<>(
@@ -102,7 +102,7 @@ public class TaskImportanceResource {
         method = RequestMethod.DELETE,
         produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
-    public ResponseEntity<Void> deleteTaskImportance(@PathVariable Long id) {
+    public ResponseEntity<Void> deleteTaskImportance(@PathVariable Integer id) {
         log.debug("REST request to delete TaskImportance : {}", id);
         taskImportanceRepository.delete(id);
         return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert("taskImportance", id.toString())).build();

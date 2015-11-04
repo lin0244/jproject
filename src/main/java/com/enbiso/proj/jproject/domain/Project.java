@@ -20,36 +20,24 @@ import java.util.Objects;
 public class Project implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
-
-
-    @Size(min = 6, max = 6)
-    @Column(name = "code", length = 6)
-    private String code;
+    @Size(min = 6, max = 10)
+    @Column(name = "id", length = 10)
+    private String id;
 
     @Column(name = "name")
     private String name;
 
-    @OneToMany(mappedBy = "project")
+    @OneToMany(mappedBy = "id.project")
     @JsonIgnore
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     private Set<Iteration> iterations = new HashSet<>();
 
-    public Long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
-    }
-
-    public String getCode() {
-        return code;
-    }
-
-    public void setCode(String code) {
-        this.code = code;
     }
 
     public String getName() {
@@ -93,7 +81,6 @@ public class Project implements Serializable {
     public String toString() {
         return "Project{" +
             "id=" + id +
-            ", code='" + code + "'" +
             ", name='" + name + "'" +
             '}';
     }

@@ -36,7 +36,7 @@ public class User extends AbstractAuditingEntity implements Serializable {
 
     @JsonIgnore
     @NotNull
-    @Size(min = 60, max = 60) 
+    @Size(min = 60, max = 60)
     @Column(length = 60)
     private String password;
 
@@ -81,6 +81,26 @@ public class User extends AbstractAuditingEntity implements Serializable {
         inverseJoinColumns = {@JoinColumn(name = "authority_name", referencedColumnName = "name")})
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     private Set<Authority> authorities = new HashSet<>();
+
+    @ManyToMany(mappedBy = "members")
+    @JsonIgnore
+    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+    private Set<Team> teams = new HashSet<>();
+
+    @OneToMany(mappedBy = "assignee")
+    @JsonIgnore
+    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+    private Set<Task> assginedTasks = new HashSet<>();
+
+    @OneToMany(mappedBy = "owner")
+    @JsonIgnore
+    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+    private Set<Task> owningTasks = new HashSet<>();
+
+    @OneToMany(mappedBy = "commenter")
+    @JsonIgnore
+    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+    private Set<TaskComment> comments = new HashSet<>();
 
     public Long getId() {
         return id;
@@ -176,6 +196,42 @@ public class User extends AbstractAuditingEntity implements Serializable {
 
     public void setAuthorities(Set<Authority> authorities) {
         this.authorities = authorities;
+    }
+
+    public boolean isActivated() {
+        return activated;
+    }
+
+    public Set<Team> getTeams() {
+        return teams;
+    }
+
+    public void setTeams(Set<Team> teams) {
+        this.teams = teams;
+    }
+
+    public Set<Task> getAssginedTasks() {
+        return assginedTasks;
+    }
+
+    public void setAssginedTasks(Set<Task> assginedTasks) {
+        this.assginedTasks = assginedTasks;
+    }
+
+    public Set<Task> getOwningTasks() {
+        return owningTasks;
+    }
+
+    public void setOwningTasks(Set<Task> owningTasks) {
+        this.owningTasks = owningTasks;
+    }
+
+    public Set<TaskComment> getComments() {
+        return comments;
+    }
+
+    public void setComments(Set<TaskComment> comments) {
+        this.comments = comments;
     }
 
     @Override

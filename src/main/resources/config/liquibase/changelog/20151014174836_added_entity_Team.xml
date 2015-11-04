@@ -25,37 +25,30 @@
             <column name="name" type="varchar(255)">
                 <constraints nullable="false" />
             </column>
-            <column name="iteration_id" type="bigint"/>
         </createTable>
 
-        <addForeignKeyConstraint baseColumnNames="iteration_id"
-                                 baseTableName="app_team_tab"
-                                 constraintName="fk_team_iteration_id"
-                                 referencedColumnNames="id"
-                                 referencedTableName="app_iteration_tab"/>
-
-        <createTable tableName="team_member">
-            <column name="members_id" type="bigint">
+        <createTable tableName="app_team_member_tab">
+            <column name="member_id" type="bigint">
                 <constraints nullable="false"/>
             </column>
-            <column name="teams_id" type="bigint">
+            <column name="team_id" type="bigint">
                 <constraints nullable="false"/>
             </column>
         </createTable>
 
-        <addPrimaryKey columnNames="teams_id, members_id" tableName="team_member"/>
+        <addPrimaryKey columnNames="team_id, member_id" tableName="app_team_member_tab"/>
 
-        <addForeignKeyConstraint baseColumnNames="teams_id"
-                                 baseTableName="team_member"
-                                 constraintName="fk_team_member_person_id"
+        <addForeignKeyConstraint baseColumnNames="team_id"
+                                 baseTableName="app_team_member_tab"
+                                 constraintName="fk_team_member_user_id"
                                  referencedColumnNames="id"
                                  referencedTableName="app_team_tab"/>
 
-        <addForeignKeyConstraint baseColumnNames="members_id"
-                                 baseTableName="team_member"
-                                 constraintName="fk_person_member_team_id"
+        <addForeignKeyConstraint baseColumnNames="member_id"
+                                 baseTableName="app_team_member_tab"
+                                 constraintName="fk_user_member_team_id"
                                  referencedColumnNames="id"
-                                 referencedTableName="app_person_tab"/>
+                                 referencedTableName="jhi_user"/>
 
     </changeSet>
 </databaseChangeLog>

@@ -6,10 +6,8 @@ import com.enbiso.proj.jproject.domain.Project;
 import com.enbiso.proj.jproject.repository.IterationRepository;
 import com.enbiso.proj.jproject.repository.ProjectRepository;
 import com.enbiso.proj.jproject.web.rest.util.HeaderUtil;
-import com.google.common.collect.Lists;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -44,13 +42,13 @@ public class IterationResource {
         method = RequestMethod.POST,
         produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
-    public ResponseEntity<Iteration> createIteration(@Valid @RequestBody Iteration iteration, @PathVariable("projectId") Long projectId) throws URISyntaxException {
+    public ResponseEntity<Iteration> createIteration(@Valid @RequestBody Iteration iteration, @PathVariable String projectId) throws URISyntaxException {
         log.debug("REST request to save Iteration : {}", iteration);
         if (iteration.getId() != null) {
             return ResponseEntity.badRequest().header("Failure", "A new iteration cannot already have an ID").body(null);
         }
         Project project = projectRepository.findOne(projectId);
-        iteration.setProject(project);
+        iteration.getId().setProject(project);
         Iteration result = iterationRepository.save(iteration);
         return ResponseEntity.created(new URI("/api/iterations/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert("iteration", result.getId().toString()))
@@ -64,7 +62,7 @@ public class IterationResource {
         method = RequestMethod.PUT,
         produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
-    public ResponseEntity<Iteration> updateIteration(@Valid @RequestBody Iteration iteration, @PathVariable("projectId") Long projectId) throws URISyntaxException {
+    public ResponseEntity<Iteration> updateIteration(@Valid @RequestBody Iteration iteration, @PathVariable String projectId) throws URISyntaxException {
         log.debug("REST request to update Iteration : {}", iteration);
         if (iteration.getId() == null) {
             return createIteration(iteration, projectId);
@@ -82,7 +80,7 @@ public class IterationResource {
         method = RequestMethod.GET,
         produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
-    public List<Iteration> getAllIterations(@PathVariable("projectId") Long projectId) {
+    public List<Iteration> getAllIterations(@PathVariable String projectId) {
         log.debug("REST request to get all Iterations");
         return iterationRepository.findAllByProject(projectRepository.findOne(projectId));
     }
@@ -94,9 +92,10 @@ public class IterationResource {
         method = RequestMethod.GET,
         produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
-    public ResponseEntity<Iteration> getIteration(@PathVariable Long id, @PathVariable("projectId") Long projectId) {
+    public ResponseEntity<Iteration> getIteration(@PathVariable String id, @PathVariable String projectId) {
         log.debug("REST request to get Iteration : {}", id);
-        return Optional.ofNullable(iterationRepository.findOne(id))
+        Iteration.Id idObj = new Iteration.Id(id, projectRepository.findOne(projectId));
+        return Optional.ofNullable(iterationRepository.findOne(idObj))
             .map(iteration -> new ResponseEntity<>(
                 iteration,
                 HttpStatus.OK))
@@ -110,9 +109,10 @@ public class IterationResource {
         method = RequestMethod.DELETE,
         produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
-    public ResponseEntity<Void> deleteIteration(@PathVariable Long id, @PathVariable("projectId") Long projectId) {
+    public ResponseEntity<Void> deleteIteration(@PathVariable String id, @PathVariable String projectId) {
         log.debug("REST request to delete Iteration : {}", id);
-        iterationRepository.delete(id);
-        return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert("iteration", id.toString())).build();
+        Iteration.Id idObj = new Iteration.Id(id, projectRepository.findOne(projectId));
+        iterationRepository.delete(idObj);
+        return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert("iteration", id)).build();
     }
 }

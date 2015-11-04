@@ -9,6 +9,6 @@ import java.util.List;
 /**
  * Spring Data JPA repository for the TaskType entity.
  */
-public interface TaskTypeRepository extends JpaRepository<TaskType,Long> {
+public interface TaskTypeRepository extends JpaRepository<TaskType,String> {
 
 }

@@ -32,10 +32,10 @@ public class Task implements Serializable {
     private Iteration iteration;
 
     @ManyToOne
-    private Person assignee;
+    private User assignee;
 
     @ManyToOne
-    private Person owner;
+    private User owner;
 
     @ManyToOne
     private TaskType type;
@@ -57,12 +57,12 @@ public class Task implements Serializable {
     @ManyToOne
     private Task parentTask;
 
-    @OneToMany(mappedBy = "task")
+    @OneToMany(mappedBy = "id.task")
     @JsonIgnore
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     private Set<TaskComment> comments = new HashSet<>();
 
-    @OneToMany(mappedBy = "task")
+    @OneToMany(mappedBy = "id.task")
     @JsonIgnore
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     private Set<TaskLog> logs = new HashSet<>();
@@ -91,20 +91,20 @@ public class Task implements Serializable {
         this.iteration = iteration;
     }
 
-    public Person getAssignee() {
+    public User getAssignee() {
         return assignee;
     }
 
-    public void setAssignee(Person person) {
-        this.assignee = person;
+    public void setAssignee(User assignee) {
+        this.assignee = assignee;
     }
 
-    public Person getOwner() {
+    public User getOwner() {
         return owner;
     }
 
-    public void setOwner(Person person) {
-        this.owner = person;
+    public void setOwner(User owner) {
+        this.owner = owner;
     }
 
     public TaskType getType() {

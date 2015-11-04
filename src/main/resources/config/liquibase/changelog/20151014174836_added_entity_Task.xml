@@ -25,13 +25,13 @@
             <column name="title" type="varchar(255)">
                 <constraints nullable="false" />
             </column>
-            <column name="iteration_id" type="bigint"/>
+            <column name="iteration_id" type="varchar(10)"/>
             <column name="assignee_id" type="bigint"/>
             <column name="owner_id" type="bigint"/>
-            <column name="type_id" type="bigint"/>
-            <column name="status_id" type="bigint"/>
-            <column name="priority_id" type="bigint"/>
-            <column name="importance_id" type="bigint"/>
+            <column name="type_id" type="varchar(10)"/>
+            <column name="status_id" type="varchar(10)"/>
+            <column name="priority_id" type="int"/>
+            <column name="importance_id" type="int"/>
             <column name="parent_task_id" type="bigint"/>
         </createTable>
 
@@ -45,13 +45,13 @@
                                  baseTableName="app_task_tab"
                                  constraintName="fk_task_assignee_id"
                                  referencedColumnNames="id"
-                                 referencedTableName="app_person_tab"/>
+                                 referencedTableName="jhi_user"/>
 
         <addForeignKeyConstraint baseColumnNames="owner_id"
                                  baseTableName="app_task_tab"
                                  constraintName="fk_task_owner_id"
                                  referencedColumnNames="id"
-                                 referencedTableName="app_person_tab"/>
+                                 referencedTableName="jhi_user"/>
 
         <addForeignKeyConstraint baseColumnNames="type_id"
                                  baseTableName="app_task_tab"

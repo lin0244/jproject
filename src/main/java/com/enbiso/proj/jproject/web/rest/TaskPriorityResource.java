@@ -86,7 +86,7 @@ public class TaskPriorityResource {
         method = RequestMethod.GET,
         produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
-    public ResponseEntity<TaskPriority> getTaskPriority(@PathVariable Long id) {
+    public ResponseEntity<TaskPriority> getTaskPriority(@PathVariable Integer id) {
         log.debug("REST request to get TaskPriority : {}", id);
         return Optional.ofNullable(taskPriorityRepository.findOne(id))
             .map(taskPriority -> new ResponseEntity<>(
@@ -102,7 +102,7 @@ public class TaskPriorityResource {
         method = RequestMethod.DELETE,
         produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
-    public ResponseEntity<Void> deleteTaskPriority(@PathVariable Long id) {
+    public ResponseEntity<Void> deleteTaskPriority(@PathVariable Integer id) {
         log.debug("REST request to delete TaskPriority : {}", id);
         taskPriorityRepository.delete(id);
         return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert("taskPriority", id.toString())).build();

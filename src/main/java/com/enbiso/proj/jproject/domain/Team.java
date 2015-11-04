@@ -22,7 +22,6 @@ public class Team implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-
     @NotNull
     @Column(name = "name", nullable = false)
     private String name;
@@ -32,10 +31,10 @@ public class Team implements Serializable {
 
     @ManyToMany
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-    @JoinTable(name = "team_member",
-               joinColumns = @JoinColumn(name="teams_id", referencedColumnName="ID"),
-               inverseJoinColumns = @JoinColumn(name="members_id", referencedColumnName="ID"))
-    private Set<Person> members = new HashSet<>();
+    @JoinTable(name = "app_team_member_tab",
+               joinColumns = @JoinColumn(name="team_id", referencedColumnName="ID"),
+               inverseJoinColumns = @JoinColumn(name="member_id", referencedColumnName="ID"))
+    private Set<User> members = new HashSet<>();
 
     public Long getId() {
         return id;
@@ -61,12 +60,12 @@ public class Team implements Serializable {
         this.iteration = iteration;
     }
 
-    public Set<Person> getMembers() {
+    public Set<User> getMembers() {
         return members;
     }
 
-    public void setMembers(Set<Person> persons) {
-        this.members = persons;
+    public void setMembers(Set<User> members) {
+        this.members = members;
     }
 
     @Override

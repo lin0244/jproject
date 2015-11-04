@@ -40,7 +40,8 @@
                 "apidocs": "API",
                 "database": "Database"
             },
-            "language": "Language"
+            "language": "Language",
+            "project": "Projects"
         },
         "form": {
             "username": "Username",

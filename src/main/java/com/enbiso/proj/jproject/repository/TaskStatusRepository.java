@@ -9,6 +9,6 @@ import java.util.List;
 /**
  * Spring Data JPA repository for the TaskStatus entity.
  */
-public interface TaskStatusRepository extends JpaRepository<TaskStatus,Long> {
+public interface TaskStatusRepository extends JpaRepository<TaskStatus,String> {
 
 }

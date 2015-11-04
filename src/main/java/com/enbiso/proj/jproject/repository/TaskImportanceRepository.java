@@ -9,6 +9,6 @@ import java.util.List;
 /**
  * Spring Data JPA repository for the TaskImportance entity.
  */
-public interface TaskImportanceRepository extends JpaRepository<TaskImportance,Long> {
+public interface TaskImportanceRepository extends JpaRepository<TaskImportance,Integer> {
 
 }

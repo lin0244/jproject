@@ -19,8 +19,8 @@
     -->
     <changeSet id="20151014174836" author="jhipster">
         <createTable tableName="app_task_log_tab">
-            <column name="id" type="bigint" autoIncrement="${autoIncrement}" >
-                <constraints primaryKey="true" nullable="false"/>
+            <column name="id" type="int">
+                <constraints nullable="false" />
             </column>
             <column name="message" type="varchar(1000)">
                 <constraints nullable="false" />
@@ -28,7 +28,9 @@
             <column name="created_on" type="timestamp">
                 <constraints nullable="false" />
             </column>
-            <column name="task_id" type="bigint"/>
+            <column name="task_id" type="bigint">
+                <constraints nullable="false" />
+            </column>
         </createTable>
         <dropDefaultValue tableName="app_task_log_tab" columnName="created_on" columnDataType="datetime"/>
 
@@ -38,6 +40,8 @@
                                  constraintName="fk_tasklog_task_id"
                                  referencedColumnNames="id"
                                  referencedTableName="app_task_tab"/>
+
+        <addPrimaryKey tableName="app_task_log_tab" columnNames="id, task_id"/>
 
     </changeSet>
 </databaseChangeLog>

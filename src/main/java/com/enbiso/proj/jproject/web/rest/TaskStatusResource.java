@@ -86,7 +86,7 @@ public class TaskStatusResource {
         method = RequestMethod.GET,
         produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
-    public ResponseEntity<TaskStatus> getTaskStatus(@PathVariable Long id) {
+    public ResponseEntity<TaskStatus> getTaskStatus(@PathVariable String id) {
         log.debug("REST request to get TaskStatus : {}", id);
         return Optional.ofNullable(taskStatusRepository.findOne(id))
             .map(taskStatus -> new ResponseEntity<>(
@@ -102,7 +102,7 @@ public class TaskStatusResource {
         method = RequestMethod.DELETE,
         produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
-    public ResponseEntity<Void> deleteTaskStatus(@PathVariable Long id) {
+    public ResponseEntity<Void> deleteTaskStatus(@PathVariable String id) {
         log.debug("REST request to delete TaskStatus : {}", id);
         taskStatusRepository.delete(id);
         return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert("taskStatus", id.toString())).build();

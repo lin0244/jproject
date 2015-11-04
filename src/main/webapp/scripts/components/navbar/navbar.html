@@ -11,6 +11,22 @@
         </div>
         <div class="collapse navbar-collapse" id="navbar-collapse" ng-switch="isAuthenticated()">
             <ul class="nav navbar-nav navbar-right">
+                <!--projects-->
+                <li ui-sref-active="active" ng-switch-when="true" class="hidden-xs"
+                    data-toggle="tooltip"
+                    data-original-title="{{'global.menu.project' | translate}}"
+                    data-placement="bottom">
+                    <a ui-sref="project" data-toggle="collapse" data-target=".navbar-collapse.in">
+                        <i class="fa fa-rocket fa-lg"></i>
+                    </a>
+                </li>
+                <li ui-sref-active="active" ng-switch-when="true" class="visible-xs">
+                    <a ui-sref="project" data-toggle="collapse" data-target=".navbar-collapse.in">
+                        <i class="fa fa-rocket fa-fw fa-lg"></i>
+                        <span class="muted" translate="global.menu.project">Project</span>
+                    </a>
+                </li>
+                <!--entities-->
                 <li ui-sref-active="active" ng-switch-when="true" class="dropdown pointer">
                     <a class="dropdown-toggle hidden-xs" data-toggle="dropdown" href=""
                        data-hover="tooltip"

@@ -24,10 +24,40 @@ import java.util.Objects;
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 public class TaskComment implements Serializable {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    @Embeddable
+    static public class Id implements Serializable {
 
+        public Id(Integer id, Task task) {
+            this.id = id;
+            this.task = task;
+        }
+
+        @NotNull
+        private Integer id;
+
+        @NotNull
+        @ManyToOne
+        private Task task;
+
+        public Integer getId() {
+            return id;
+        }
+
+        public void setId(Integer id) {
+            this.id = id;
+        }
+
+        public Task getTask() {
+            return task;
+        }
+
+        public void setTask(Task task) {
+            this.task = task;
+        }
+    }
+
+    @EmbeddedId
+    private Id id;
 
     @NotNull
     @Column(name = "content", nullable = false)
@@ -41,16 +71,13 @@ public class TaskComment implements Serializable {
     private DateTime postedOn;
 
     @ManyToOne
-    private Person commenter;
+    private User commenter;
 
-    @ManyToOne
-    private Task task;
-
-    public Long getId() {
+    public Id getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Id id) {
         this.id = id;
     }
 
@@ -70,20 +97,12 @@ public class TaskComment implements Serializable {
         this.postedOn = postedOn;
     }
 
-    public Person getCommenter() {
+    public User getCommenter() {
         return commenter;
     }
 
-    public void setCommenter(Person person) {
-        this.commenter = person;
-    }
-
-    public Task getTask() {
-        return task;
-    }
-
-    public void setTask(Task task) {
-        this.task = task;
+    public void setCommenter(User commenter) {
+        this.commenter = commenter;
     }
 
     @Override

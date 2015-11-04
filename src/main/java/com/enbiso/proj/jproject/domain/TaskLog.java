@@ -24,10 +24,39 @@ import java.util.Objects;
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 public class TaskLog implements Serializable {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    @Embeddable
+    public static class Id implements Serializable {
 
+        @NotNull
+        private Integer id;
+
+        @ManyToOne
+        private Task task;
+
+        public Id(Integer id, Task task) {
+            this.id = id;
+            this.task = task;
+        }
+
+        public Integer getId() {
+            return id;
+        }
+
+        public void setId(Integer id) {
+            this.id = id;
+        }
+
+        public Task getTask() {
+            return task;
+        }
+
+        public void setTask(Task task) {
+            this.task = task;
+        }
+    }
+
+    @EmbeddedId
+    private Id id;
 
     @NotNull
     @Column(name = "message", nullable = false)
@@ -40,14 +69,11 @@ public class TaskLog implements Serializable {
     @Column(name = "created_on", nullable = false)
     private DateTime createdOn;
 
-    @ManyToOne
-    private Task task;
-
-    public Long getId() {
+    public Id getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Id id) {
         this.id = id;
     }
 
@@ -65,14 +91,6 @@ public class TaskLog implements Serializable {
 
     public void setCreatedOn(DateTime createdOn) {
         this.createdOn = createdOn;
-    }
-
-    public Task getTask() {
-        return task;
-    }
-
-    public void setTask(Task task) {
-        this.task = task;
     }
 
     @Override

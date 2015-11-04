@@ -1,3 +1,47 @@
+<ul class="breadcrumb">
+    <li><a ui-sref="project"><i class="fa fa-rocket"></i></a></li>
+    <li class="active">{{project.code}}</li>
+</ul>
+<div class="page-header">
+    <div class="pull-right">
+        <a ui-sref="project.edit({id:project.id})" class="btn btn-sm btn-default"
+           data-original-title="{{'entity.action.edit'|translate}}" data-toggle="tooltip" data-placement="top">
+            <i class="fa fa-pencil fa-fw"></i>
+        </a>&nbsp;
+        <a ng-click="delete(project.id)" class="btn btn-sm btn-danger"
+           data-original-title="{{'entity.action.delete'|translate}}" data-toggle="tooltip" data-placement="top">
+            <i class="fa fa-ban fa-fw"></i>
+        </a>
+    </div>
+    <h2 class="page-title">{{project.name}}</h2>
+</div>
+<div class="panel panel-default">
+    <div class="pull-right">
+        <button type="submit" ui-sref="iteration.new"
+                class="btn btn-default btn-sm"><span translate="jprojectApp.iteration.home.createLabel"></span>
+        </button>
+    </div>
+    <div class="panel-body">
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th translate="jprojectApp.iteration.title">Title</th>
+                <th translate="jprojectApp.iteration.startDate">StartDate</th>
+                <th translate="jprojectApp.iteration.endDate">EndDate</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="iteration in iterations track by iteration.id" ui-sref="iteration.detail({projectId:iteration.project.id,id:iteration.id})"
+                class="pointer">
+                <td>{{iteration.title}}</td>
+                <td>{{iteration.startDate | date:'MMM dd, yyyy'}}</td>
+                <td>{{iteration.endDate | date:'MMM dd, yyyy'}}</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
 <div class="modal fade" id="deleteProjectConfirmation">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -23,54 +67,3 @@
     </div>
 </div>
 
-<div class="page-header">
-        <div class="pull-right">
-            <br/>
-            <div class="btn-group btn-group-xs">
-                <button type="submit" ui-sref="project.edit({id:project.id})"
-                        class="btn btn-default btn-xs">
-                    <i class="fa fa-pencil fa-fw"></i>&nbsp;<span translate="entity.action.edit"></span>
-                </button>
-                <button type="submit" ng-click="delete(project.id)"
-                        class="btn btn-default btn-xs">
-                    <i class="fa fa-ban fa-fw"></i>&nbsp;<span translate="entity.action.delete"></span>
-                </button>
-            </div>
-        </div>
-        <h2 class="page-title">
-            <i class="fa fa-rocket fa-lg"></i>&nbsp;{{project.code}}&nbsp;<small>{{project.name}}</small>
-        </h2>
-    </div>
-</div>
-
-<div class="panel panel-default">
-    <div class="text-right">
-        <button type="submit" ui-sref="iteration.new"
-                class="btn btn-default btn-sm">
-            <i class="fa fa-plus-circle fa-fw"></i>&nbsp;<span translate="jprojectApp.iteration.home.createLabel"></span>
-        </button>
-    </div>
-    <div class="panel-body">
-        <table class="table table-hover">
-            <thead>
-            <tr>
-                <th translate="jprojectApp.iteration.title">Title</th>
-                <th translate="jprojectApp.iteration.startDate">StartDate</th>
-                <th translate="jprojectApp.iteration.endDate">EndDate</th>
-                <th></th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr ng-repeat="iteration in iterations track by iteration.id">
-                <td>{{iteration.title}}</td>
-                <td>{{iteration.startDate | date:'MMM dd, yyyy'}}</td>
-                <td>{{iteration.endDate | date:'MMM dd, yyyy'}}</td>
-                <td>
-                    <a ui-sref="iteration.detail({projectId:iteration.project.id,id:iteration.id})"
-                        class="btn btn-xs btn-primary"><i class="fa fa-arrow-right fa-fw"></i></a>
-                </td>
-            </tr>
-            </tbody>
-        </table>
-    </div>
-</div>

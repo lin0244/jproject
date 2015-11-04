@@ -86,7 +86,7 @@ public class TaskTypeResource {
         method = RequestMethod.GET,
         produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
-    public ResponseEntity<TaskType> getTaskType(@PathVariable Long id) {
+    public ResponseEntity<TaskType> getTaskType(@PathVariable String id) {
         log.debug("REST request to get TaskType : {}", id);
         return Optional.ofNullable(taskTypeRepository.findOne(id))
             .map(taskType -> new ResponseEntity<>(
@@ -102,7 +102,7 @@ public class TaskTypeResource {
         method = RequestMethod.DELETE,
         produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
-    public ResponseEntity<Void> deleteTaskType(@PathVariable Long id) {
+    public ResponseEntity<Void> deleteTaskType(@PathVariable String id) {
         log.debug("REST request to delete TaskType : {}", id);
         taskTypeRepository.delete(id);
         return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert("taskType", id.toString())).build();
