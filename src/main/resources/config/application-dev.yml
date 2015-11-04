@@ -15,7 +15,7 @@ spring:
         active: dev
     datasource:
         driver-class-name: org.h2.jdbcx.JdbcDataSource
-        url: jdbc:h2:file:./jhipster.dev;DB_CLOSE_DELAY=-1
+        url: jdbc:h2:file:./jhipster.dev;DB_CLOSE_DELAY=-1;MV_STORE=FALSE;MVCC=FALSE
         name:
         username:
         password:
