@@ -150,7 +150,7 @@ public class TaskCommentResourceTest {
         restTaskCommentMockMvc.perform(get("/api/taskComments"))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
-                .andExpect(jsonPath("$.[*].id").value(hasItem(taskComment.getId().intValue())))
+                .andExpect(jsonPath("$.[*].id").value(hasItem(taskComment.getId().getId().intValue())))
                 .andExpect(jsonPath("$.[*].content").value(hasItem(DEFAULT_CONTENT.toString())))
                 .andExpect(jsonPath("$.[*].postedOn").value(hasItem(DEFAULT_POSTED_ON_STR)));
     }
@@ -165,7 +165,7 @@ public class TaskCommentResourceTest {
         restTaskCommentMockMvc.perform(get("/api/taskComments/{id}", taskComment.getId()))
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON))
-            .andExpect(jsonPath("$.id").value(taskComment.getId().intValue()))
+            .andExpect(jsonPath("$.id").value(taskComment.getId().getId().intValue()))
             .andExpect(jsonPath("$.content").value(DEFAULT_CONTENT.toString()))
             .andExpect(jsonPath("$.postedOn").value(DEFAULT_POSTED_ON_STR));
     }

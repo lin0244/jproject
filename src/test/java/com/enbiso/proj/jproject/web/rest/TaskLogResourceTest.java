@@ -150,7 +150,7 @@ public class TaskLogResourceTest {
         restTaskLogMockMvc.perform(get("/api/taskLogs"))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
-                .andExpect(jsonPath("$.[*].id").value(hasItem(taskLog.getId().intValue())))
+                .andExpect(jsonPath("$.[*].id").value(hasItem(taskLog.getId().getId().intValue())))
                 .andExpect(jsonPath("$.[*].message").value(hasItem(DEFAULT_MESSAGE.toString())))
                 .andExpect(jsonPath("$.[*].createdOn").value(hasItem(DEFAULT_CREATED_ON_STR)));
     }
@@ -165,7 +165,7 @@ public class TaskLogResourceTest {
         restTaskLogMockMvc.perform(get("/api/taskLogs/{id}", taskLog.getId()))
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON))
-            .andExpect(jsonPath("$.id").value(taskLog.getId().intValue()))
+            .andExpect(jsonPath("$.id").value(taskLog.getId().getId().intValue()))
             .andExpect(jsonPath("$.message").value(DEFAULT_MESSAGE.toString()))
             .andExpect(jsonPath("$.createdOn").value(DEFAULT_CREATED_ON_STR));
     }

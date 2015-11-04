@@ -41,8 +41,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @IntegrationTest
 public class ProjectResourceTest {
 
-    private static final String DEFAULT_CODE = "AAAAAA";
-    private static final String UPDATED_CODE = "BBBBBB";
+    private static final String DEFAULT_ID = "AAAAAA";
+    private static final String UPDATED_ID = "BBBBBB";
     private static final String DEFAULT_NAME = "AAAAA";
     private static final String UPDATED_NAME = "BBBBB";
 
@@ -72,7 +72,7 @@ public class ProjectResourceTest {
     @Before
     public void initTest() {
         project = new Project();
-        project.setCode(DEFAULT_CODE);
+        project.setId(DEFAULT_ID);
         project.setName(DEFAULT_NAME);
     }
 
@@ -92,7 +92,7 @@ public class ProjectResourceTest {
         List<Project> projects = projectRepository.findAll();
         assertThat(projects).hasSize(databaseSizeBeforeCreate + 1);
         Project testProject = projects.get(projects.size() - 1);
-        assertThat(testProject.getCode()).isEqualTo(DEFAULT_CODE);
+        assertThat(testProject.getId()).isEqualTo(DEFAULT_ID);
         assertThat(testProject.getName()).isEqualTo(DEFAULT_NAME);
     }
 
@@ -106,8 +106,8 @@ public class ProjectResourceTest {
         restProjectMockMvc.perform(get("/api/projects"))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
-                .andExpect(jsonPath("$.[*].code").value(hasItem(DEFAULT_CODE.toString())))
-                .andExpect(jsonPath("$.[*].name").value(hasItem(DEFAULT_NAME.toString())));
+                .andExpect(jsonPath("$.[*].code").value(hasItem(DEFAULT_ID)))
+                .andExpect(jsonPath("$.[*].name").value(hasItem(DEFAULT_NAME)));
     }
 
     @Test
@@ -117,10 +117,10 @@ public class ProjectResourceTest {
         projectRepository.saveAndFlush(project);
 
         // Get the project
-        restProjectMockMvc.perform(get("/api/projects/{code}", project.getCode()))
+        restProjectMockMvc.perform(get("/api/projects/{id}", project.getId()))
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON))
-            .andExpect(jsonPath("$.code").value(DEFAULT_CODE.toString()))
+            .andExpect(jsonPath("$.code").value(DEFAULT_ID.toString()))
             .andExpect(jsonPath("$.name").value(DEFAULT_NAME.toString()));
     }
 
@@ -141,7 +141,7 @@ public class ProjectResourceTest {
 		int databaseSizeBeforeUpdate = projectRepository.findAll().size();
 
         // Update the project
-        project.setCode(UPDATED_CODE);
+        project.setId(DEFAULT_ID);
         project.setName(UPDATED_NAME);
 
         restProjectMockMvc.perform(put("/api/projects")
@@ -153,7 +153,7 @@ public class ProjectResourceTest {
         List<Project> projects = projectRepository.findAll();
         assertThat(projects).hasSize(databaseSizeBeforeUpdate);
         Project testProject = projects.get(projects.size() - 1);
-        assertThat(testProject.getCode()).isEqualTo(UPDATED_CODE);
+        assertThat(testProject.getId()).isEqualTo(DEFAULT_ID);
         assertThat(testProject.getName()).isEqualTo(UPDATED_NAME);
     }
 
@@ -166,7 +166,7 @@ public class ProjectResourceTest {
 		int databaseSizeBeforeDelete = projectRepository.findAll().size();
 
         // Get the project
-        restProjectMockMvc.perform(delete("/api/projects/{code}", project.getCode())
+        restProjectMockMvc.perform(delete("/api/projects/{id}", project.getId())
                 .accept(TestUtil.APPLICATION_JSON_UTF8))
                 .andExpect(status().isOk());
 

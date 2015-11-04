@@ -149,10 +149,10 @@ private static final TaskStatusState DEFAULT_STATUS = TaskStatusState.NEW;
         restTaskStatusMockMvc.perform(get("/api/taskStatuss"))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
-                .andExpect(jsonPath("$.[*].id").value(hasItem(taskStatus.getId().intValue())))
-                .andExpect(jsonPath("$.[*].title").value(hasItem(DEFAULT_TITLE.toString())))
+                .andExpect(jsonPath("$.[*].id").value(hasItem(taskStatus.getId())))
+                .andExpect(jsonPath("$.[*].title").value(hasItem(DEFAULT_TITLE)))
                 .andExpect(jsonPath("$.[*].status").value(hasItem(DEFAULT_STATUS.toString())))
-                .andExpect(jsonPath("$.[*].description").value(hasItem(DEFAULT_DESCRIPTION.toString())));
+                .andExpect(jsonPath("$.[*].description").value(hasItem(DEFAULT_DESCRIPTION)));
     }
 
     @Test
@@ -165,10 +165,10 @@ private static final TaskStatusState DEFAULT_STATUS = TaskStatusState.NEW;
         restTaskStatusMockMvc.perform(get("/api/taskStatuss/{id}", taskStatus.getId()))
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON))
-            .andExpect(jsonPath("$.id").value(taskStatus.getId().intValue()))
-            .andExpect(jsonPath("$.title").value(DEFAULT_TITLE.toString()))
+            .andExpect(jsonPath("$.id").value(taskStatus.getId()))
+            .andExpect(jsonPath("$.title").value(DEFAULT_TITLE))
             .andExpect(jsonPath("$.status").value(DEFAULT_STATUS.toString()))
-            .andExpect(jsonPath("$.description").value(DEFAULT_DESCRIPTION.toString()));
+            .andExpect(jsonPath("$.description").value(DEFAULT_DESCRIPTION));
     }
 
     @Test

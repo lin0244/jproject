@@ -174,8 +174,8 @@ public class IterationResourceTest {
         restIterationMockMvc.perform(get("/api/iterations"))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
-                .andExpect(jsonPath("$.[*].id").value(hasItem(iteration.getId().intValue())))
-                .andExpect(jsonPath("$.[*].title").value(hasItem(DEFAULT_TITLE.toString())))
+                .andExpect(jsonPath("$.[*].id").value(hasItem(iteration.getId().getId())))
+                .andExpect(jsonPath("$.[*].title").value(hasItem(DEFAULT_TITLE)))
                 .andExpect(jsonPath("$.[*].startDate").value(hasItem(DEFAULT_START_DATE_STR)))
                 .andExpect(jsonPath("$.[*].endDate").value(hasItem(DEFAULT_END_DATE_STR)));
     }
@@ -190,8 +190,8 @@ public class IterationResourceTest {
         restIterationMockMvc.perform(get("/api/iterations/{id}", iteration.getId()))
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON))
-            .andExpect(jsonPath("$.id").value(iteration.getId().intValue()))
-            .andExpect(jsonPath("$.title").value(DEFAULT_TITLE.toString()))
+            .andExpect(jsonPath("$.id").value(iteration.getId().getId()))
+            .andExpect(jsonPath("$.title").value(DEFAULT_TITLE))
             .andExpect(jsonPath("$.startDate").value(DEFAULT_START_DATE_STR))
             .andExpect(jsonPath("$.endDate").value(DEFAULT_END_DATE_STR));
     }
