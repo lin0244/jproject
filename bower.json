@@ -49,7 +49,7 @@
        },
        "bootswatch": {
            "main": [
-             "yeti/bootstrap.css"
+             "cosmo/bootstrap.css"
            ]
        }
     },
